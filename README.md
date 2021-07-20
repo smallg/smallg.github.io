@@ -14,7 +14,7 @@ https://classic.warcraftlogs.com/v1/report/events/vKFV8Yygpq4Daj9w?&start=325213
 4. ZS
 5. MS
 6. XD
-7. SQ
-8. DZ
+7. ~~SQ~~
+8. ~~DZ~~
 9. SM
 
