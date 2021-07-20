@@ -1,0 +1,2 @@
+# smallg.github.io
+blog
