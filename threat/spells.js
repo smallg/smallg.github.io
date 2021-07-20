@@ -1,4 +1,4 @@
-let debugMode = false;
+let DEBUGMODE = false;
 
 let borders = {
   taunt: [3, '#ffa500'],
@@ -340,6 +340,16 @@ const threatFunctions = {
   },
 };
 
+function handler_invisibility(ev, fight) {
+  if (ev.type !== 'cast') return;
+  threatFunctions.unitLeaveCombat(ev, 'source', fight, ev.ability.name);
+}
+
+function handler_soulshatter(ev, fight) {
+  if (ev.type !== 'cast') return;
+  threatFunctions.unitLeaveCombat(ev, 'source', fight, ev.ability.name);
+}
+
 function handler_vanish(ev, fight) {
   if (ev.type !== 'cast') return;
   threatFunctions.unitLeaveCombat(ev, 'source', fight, ev.ability.name);
@@ -403,20 +413,20 @@ function handler_basic(ev, fight) {
       );
       break;
     case 'energize':
-      if (debugMode) console.log('Unhandled energize.', ev);
+      if (DEBUGMODE) console.log('Unhandled energize.', ev);
       handler_energize(ev, fight);
       break;
     case 'applybuff':
     case 'refreshbuff':
     case 'applybuffstack':
-      if (debugMode) console.log('Unhandled buff.', ev);
+      if (DEBUGMODE) console.log('Unhandled buff.', ev);
       if (ev.sourceIsFriendly !== ev.targetIsFriendly) return;
       threatFunctions.unitThreatenEnemiesSplit(ev, 'source', fight, 60);
       break;
     case 'applydebuff':
     case 'applydebuffstack':
     case 'refreshdebuff':
-      if (debugMode) console.log('Unhandled buff.', ev);
+      if (DEBUGMODE) console.log('Unhandled buff.', ev);
       if (ev.sourceIsFriendly !== ev.targetIsFriendly) return;
       threatFunctions.sourceThreatenTarget(ev, fight, 120);
       break;
@@ -430,7 +440,7 @@ function handler_basic(ev, fight) {
     case 'extraattacks':
       break;
     default:
-      if (debugMode) console.log('Unhandled event.', ev);
+      if (DEBUGMODE) console.log('Unhandled event.', ev);
   }
 }
 
@@ -726,31 +736,40 @@ const spellFunctions = {
 
   17624: handler_vanish, // Flask of Petrification
 
-  // Paladin
+  // Paladin 圣骑士
+  // 强效王者
   25898: handler_threatOnBuff(60), // GBoK
-  25890: handler_threatOnBuff(60), // GBoL
-  25916: handler_threatOnBuff(60), // GBoM
+  // 强效光明
+  27145: handler_threatOnBuff(60), // GBoL
+  // 强效力量
+  27141: handler_threatOnBuff(60), // GBoM3
+  // 强效拯救
   25895: handler_threatOnBuff(60), // GBoS
-  25899: handler_threatOnBuff(60), // GBoSanc
-  25894: handler_threatOnBuff(54), // GBoW
-  25918: handler_threatOnBuff(60), // GBoW
-  19742: handler_threatOnBuff(14), // BoW
-  19850: handler_threatOnBuff(24), // BoW
-  19852: handler_threatOnBuff(34), // BoW
-  19853: handler_threatOnBuff(44), // BoW
-  19854: handler_threatOnBuff(54), // BoW
-  25290: handler_threatOnBuff(60), // BoW
+  // 强效庇护
+  27169: handler_threatOnBuff(60), // GBoSanc
+  // 强效智慧
+  27143: handler_threatOnBuff(60), // GBoW3
+  // 智慧祝福
+  27142: handler_threatOnBuff(60), // BoW7
+  // 正义圣印
   20293: threatFunctions.concat(handler_threatOnBuff(58), handler_damage), // Seal of Righteousness r8
+  // 正义审判
   20286: handler_damage, // Judgement of Righteousness
+  // 奉献
   26573: handler_damage, // Consecration r1
   20116: handler_damage, // Consecration r2
   20922: handler_damage, // Consecration r3
   20923: handler_damage, // Consecration r4
   20924: handler_damage, // Consecration r5
-  24239: handler_damage, // Hammer of Wrath
+  27173: handler_damage, // Consecration r7
+  // 愤怒之锤
+  27180: handler_damage, // Hammer of Wrath
+  // 神圣之盾
   20925: handler_modDamage(1.2), // Holy Shield r1
   20927: handler_modDamage(1.2), // Holy Shield r2
   20928: handler_modDamage(1.2), // Holy Shield r3
+  27179: handler_modDamage(1.2), // Holy Shield r3
+  // 虔诚光环
   465: handler_zero, // Devotion Aura r1
   10290: handler_zero, // Devotion Aura r2
   643: handler_zero, // Devotion Aura r3
@@ -758,21 +777,32 @@ const spellFunctions = {
   1032: handler_zero, // Devotion Aura r5
   10292: handler_zero, // Devotion Aura r6
   10293: handler_zero, // Devotion Aura r7
+  27149: handler_zero, // Devotion Aura r8
+  // 专注光环
   19746: handler_zero, // Concentration Aura
+  // 火焰抗性光环
   19891: handler_zero, // Fire Resistance Aura r1
   19899: handler_zero, // Fire Resistance Aura r2
   19900: handler_zero, // Fire Resistance Aura r3
+  27153: handler_zero, // Fire Resistance Aura r4
+  // 冰霜抗性光环
   19888: handler_zero, // Frost Resistance Aura r1
   19897: handler_zero, // Frost Resistance Aura r2
   19898: handler_zero, // Frost Resistance Aura r3
+  27152: handler_zero, // Frost Resistance Aura r4
+  // 暗影抗性光环
   19876: handler_zero, // Shadow Resistance Aura r1
   19895: handler_zero, // Shadow Resistance Aura r2
   19896: handler_zero, // Shadow Resistance Aura r3
+  27151: handler_zero, // Shadow Resistance Aura r4
+  // 惩罚光环
   7294: handler_damage, // Retribution Aura r1
   10298: handler_damage, // Retribution Aura r2
   10299: handler_damage, // Retribution Aura r3
   10300: handler_damage, // Retribution Aura r4
   10301: handler_damage, // Retribution Aura r5
+  27150: handler_damage, // Retribution Aura r6
+  // 圣洁光环
   20218: handler_zero, // Sanctity Aura
   // Paladin heals have .25 coefficient. Sources:
   // cha#0438 2018-12-04 https://discordapp.com/channels/383596811517952002/456930992557654037/519502645858271243
@@ -780,6 +810,7 @@ const spellFunctions = {
   //     [15:18] chaboi: which is why paladin healing threat is 0.5, which is much lower than the other healers even if they talent into threat reduc
   // 4man Onyxia https://classic.warcraftlogs.com/reports/TFqN9Z1HCxnLPypG
   //     Paladin doesn't pull threat when he should at usual .5 heal coefficient.
+  // 圣光术
   635: handler_modHeal(0.5), // Holy Light r1
   639: handler_modHeal(0.5), // Holy Light r2
   647: handler_modHeal(0.5), // Holy Light r3
@@ -789,35 +820,53 @@ const spellFunctions = {
   10328: handler_modHeal(0.5), // Holy Light r7
   10329: handler_modHeal(0.5), // Holy Light r8
   25292: handler_modHeal(0.5), // Holy Light r9
+  27135: handler_modHeal(0.5), // Holy Light r10
+  27136: handler_modHeal(0.5), // Holy Light r11
+  // 圣光闪现
   19750: handler_modHeal(0.5), // Flash of Light r1
   19939: handler_modHeal(0.5), // Flash of Light r2
   19940: handler_modHeal(0.5), // Flash of Light r3
   19941: handler_modHeal(0.5), // Flash of Light r4
   19942: handler_modHeal(0.5), // Flash of Light r5
   19943: handler_modHeal(0.5), // Flash of Light r6
-  //633: handler_modHeal(.5), // Lay on Hands r1 - Generates a total threat of heal * .5 instead of heal * .25
-  //2800: handler_modHeal(.5), // Lay on Hands r2
-  //10310: handler_modHeal(.5), // Lay on Hands r3
+  27137: handler_modHeal(0.5), // Flash of Light r7
+  // 圣疗术
+  633: handler_modHeal(.5), // Lay on Hands r1 - Generates a total threat of heal * .5 instead of heal * .25
+  2800: handler_modHeal(.5), // Lay on Hands r2
+  10310: handler_modHeal(.5), // Lay on Hands r3
+  27154: handler_modHeal(.5), // Lay on Hands r4
+  // 神圣震击
   25914: handler_modHeal(0.5), // Holy Shock r1
   25913: handler_modHeal(0.5), // Holy Shock r2
   25903: handler_modHeal(0.5), // Holy Shock r3
+  27174: handler_modHeal(0.5), // Holy Shock r4
+  33072: handler_modHeal(0.5), // Holy Shock r5
+  // 烈焰惩戒者
   19968: handler_modHeal(0.5), // Holy Light that appears in logs
+  // 噩运猎弓
   19993: handler_modHeal(0.5), // Flash of Light that appears in logs
 
-  // Mage
+  // Mage 法师
   10181: handler_damage, // Frostbolt
+  66: handler_invisibility,
 
-  // Rogue
+  // Rogue 
+  // 盗贼消失等级1，2，3
   1856: handler_vanish,
   1857: handler_vanish, // Vanish
+  26889: handler_vanish, 
+  // 盗贼佯攻等级1,2,3,4,5,6
   1966: handler_castCanMissNoCoefficient(-150), // Feint r1
   6768: handler_castCanMissNoCoefficient(-240), // Feint r2
   8637: handler_castCanMissNoCoefficient(-390), // Feint r3
   11303: handler_castCanMissNoCoefficient(-600), // Feint r4
   25302: handler_castCanMissNoCoefficient(-800), // Feint r5
+  27448: handler_castCanMissNoCoefficient(-1000), // Feint r6
 
   // Priest
+  // 盾
   6788: handler_zero, // Weakened Soul
+  // 心灵震爆
   8092: handler_threatOnHit(40), // Mind Blast r1
   8102: handler_threatOnHit(77), // Mind Blast r2
   8103: handler_threatOnHit(121), // Mind Blast r3
@@ -827,6 +876,7 @@ const spellFunctions = {
   10945: handler_threatOnHit(380), // Mind Blast r7
   10946: handler_threatOnHit(460), // Mind Blast r8
   10947: handler_threatOnHit(540), // Mind Blast r9
+  // 神圣新星
   15237: handler_zero, // Holy Nova r1
   15430: handler_zero, // Holy Nova r2
   15431: handler_zero, // Holy Nova r3
@@ -841,52 +891,79 @@ const spellFunctions = {
   27805: handler_zero, // Holy Nova r6
 
   // Warlock
+  // 诅咒增幅
   18288: handler_zero, // Amplify Curse
+  // 厄运诅咒
   603: handler_threatOnDebuffOrDamage(120), // Curse of Doom
+  // 疲劳诅咒
   18223: handler_zero, // Curse of Exhaustion
+  // 鲁莽诅咒
   704: handler_threatOnDebuff(2 * 14), // CoR r1
   7658: handler_threatOnDebuff(2 * 28), // CoR r2
   7659: handler_threatOnDebuff(2 * 42), // CoR r3
   11717: handler_threatOnDebuff(2 * 56), // CoR r4
-  17862: handler_threatOnDebuff(2 * 44), // CoS r1
-  17937: handler_threatOnDebuff(2 * 56), // CoS r2
+  27226: handler_threatOnDebuff(2 * 70), // CoR r5
+  // 暗影诅咒，70移除
+  // 17862: handler_threatOnDebuff(2 * 44), // CoS r1
+  // 17937: handler_threatOnDebuff(2 * 56), // CoS r2
+  // 语言诅咒
   1714: handler_threatOnDebuff(2 * 26), // CoT r1
   11719: handler_threatOnDebuff(2 * 50), // CoT r2
+  // 虚弱诅咒
   702: handler_threatOnDebuff(2 * 4), // CoW r1
   1108: handler_threatOnDebuff(2 * 12), // CoW r2
   6205: handler_threatOnDebuff(2 * 22), // CoW r3
   7646: handler_threatOnDebuff(2 * 32), // CoW r4
   11707: handler_threatOnDebuff(2 * 42), // CoW r5
   11708: handler_threatOnDebuff(2 * 52), // CoW r6
+  27224: handler_threatOnDebuff(2 * 62), // CoW r7
+  30909: handler_threatOnDebuff(2 * 72), // CoW r8
+  // 元素诅咒
   1490: handler_threatOnDebuff(2 * 32), // CotE r1
   11721: handler_threatOnDebuff(2 * 46), // CotE r2
   11722: handler_threatOnDebuff(2 * 60), // CotE r3
+  27228: handler_threatOnDebuff(2 * 92), // CotE r4
+  // 生命分流
   1454: handler_zero, // Life Tap r1
   1455: handler_zero, // Life Tap r2
   1456: handler_zero, // Life Tap r3
   11687: handler_zero, // Life Tap r4
   11688: handler_zero, // Life Tap r5
   11689: handler_zero, // Life Tap r6
+  27222: handler_zero, // Life Tap r7
+  // 生命分流，有点问题
   31818: handler_zero, // Life Tap script
+  // 吸取法力
   5138: handler_zero, // Drain Mana r1
   6226: handler_zero, // Drain Mana r2
   11703: handler_zero, // Drain Mana r3
   11704: handler_zero, // Drain Mana r4
-  689: handler_damage, // Drain Life r1
+  27221: handler_zero, // Drain Mana r5
+  30908: handler_zero, // Drain Mana r6
+  // 吸取生命
+  689: handler_damage, // Drain Life r1 
   699: handler_damage, // Drain Life r2
   709: handler_damage, // Drain Life r3
   7651: handler_damage, // Drain Life r4
   11699: handler_damage, // Drain Life r5
   11700: handler_damage, // Drain Life r6
+  27219: handler_damage, // Drain Life r7
+  27220: handler_damage, // Drain Life r8
+  // 生命虹吸
   18265: handler_threatOnDebuffOrDamage(2 * 30), // Siphon Life r1
   18879: handler_threatOnDebuffOrDamage(2 * 38), // Siphon Life r2
   18880: handler_threatOnDebuffOrDamage(2 * 48), // Siphon Life r3
   18881: handler_threatOnDebuffOrDamage(2 * 58), // Siphon Life r4
+  27264: handler_threatOnDebuffOrDamage(2 * 58), // Siphon Life r5
+  30911: handler_threatOnDebuffOrDamage(2 * 58), // Siphon Life r6
+  // 放逐
   710: handler_threatOnDebuff(2 * 28), // Banish r1
   18647: handler_threatOnDebuff(2 * 48), // Banish r2
+  // 恐惧
   5782: handler_threatOnDebuff(2 * 8), // Fear r1
   6213: handler_threatOnDebuff(2 * 32), // Fear r2
   6215: handler_threatOnDebuff(2 * 56), // Fear r3
+  // 腐蚀术
   172: handler_damage, // Corruption r1
   6222: handler_damage, // Corruption r2
   6223: handler_damage, // Corruption r3
@@ -894,27 +971,40 @@ const spellFunctions = {
   11671: handler_damage, // Corruption r5
   11672: handler_damage, // Corruption r6
   25311: handler_damage, // Corruption r7
+  27216: handler_damage, // Corruption r8
+  // 痛苦诅咒
   980: handler_damage, // CoA r1
   1014: handler_damage, // CoA r2
   6217: handler_damage, // CoA r3
   11711: handler_damage, // CoA r4
   11712: handler_damage, // CoA r5
   11713: handler_damage, // CoA r6
+  27218: handler_damage, // CoA r7
+  // 死亡缠绕
   6789: handler_damage, // Death Coil r1
   17925: handler_damage, // Death Coil r2
   17926: handler_damage, // Death Coil r3
+  27223: handler_damage, // Death Coil r4
+  // 吸取灵魂
   1120: handler_damage, // Drain Soul r1
   8288: handler_damage, // Drain Soul r2
   8289: handler_damage, // Drain Soul r3
   11675: handler_damage, // Drain Soul r4
+  27217: handler_damage, // Drain Soul r5
+  // 群恐
   5484: handler_threatOnDebuff(2 * 40), // Howl of Terror r1
   17928: handler_threatOnDebuff(2 * 54), // Howl of Terror r2
+  // 灼热之痛
   5676: handler_modDamage(2), // Searing Pain r1
   17919: handler_modDamage(2), // Searing Pain r2
   17920: handler_modDamage(2), // Searing Pain r3
   17921: handler_modDamage(2), // Searing Pain r4
   17922: handler_modDamage(2), // Searing Pain r5
   17923: handler_modDamage(2), // Searing Pain r6
+  27210: handler_modDamage(2), // Searing Pain r7
+  30459: handler_modDamage(2), // Searing Pain r8
+  // 灵魂碎裂
+  29858: handler_soulshatter,
 
   // Shaman
   8042: handler_modDamage(2), // Earth Shock r1

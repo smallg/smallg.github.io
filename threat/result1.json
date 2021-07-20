@@ -1,0 +1,2165 @@
+{
+    "fights": [
+        {
+            "id": 1,
+            "boss": 0,
+            "start_time": 62,
+            "end_time": 113135,
+            "name": "玛瑟里顿"
+        },
+        {
+            "id": 2,
+            "boss": 0,
+            "start_time": 134748,
+            "end_time": 190293,
+            "name": "地狱火典狱官"
+        },
+        {
+            "id": 3,
+            "boss": 0,
+            "start_time": 206775,
+            "end_time": 259989,
+            "name": "地狱火典狱官"
+        },
+        {
+            "id": 4,
+            "boss": 651,
+            "start_time": 705064,
+            "end_time": 837818,
+            "name": "玛瑟里顿",
+            "size": 25,
+            "difficulty": 3,
+            "kill": false,
+            "partial": 3,
+            "bossPercentage": 0,
+            "fightPercentage": 0,
+            "lastPhaseForPercentageDisplay": 0,
+            "maps": [
+                331
+            ]
+        },
+        {
+            "id": 5,
+            "boss": 651,
+            "start_time": 1126209,
+            "end_time": 1264096,
+            "name": "玛瑟里顿",
+            "size": 25,
+            "difficulty": 3,
+            "kill": false,
+            "partial": 3,
+            "bossPercentage": 0,
+            "fightPercentage": 0,
+            "lastPhaseForPercentageDisplay": 0,
+            "maps": [
+                331
+            ]
+        },
+        {
+            "id": 6,
+            "boss": 651,
+            "start_time": 1516361,
+            "end_time": 1988687,
+            "name": "玛瑟里顿",
+            "size": 25,
+            "difficulty": 3,
+            "kill": true,
+            "partial": 3,
+            "bossPercentage": 1,
+            "fightPercentage": 1,
+            "lastPhaseForPercentageDisplay": 0,
+            "maps": [
+                331
+            ]
+        },
+        {
+            "id": 7,
+            "boss": 0,
+            "start_time": 2454839,
+            "end_time": 2493707,
+            "name": "戈隆祭司",
+            "zoneID": 565,
+            "zoneName": "格鲁尔的巢穴",
+            "zoneDifficulty": 3
+        },
+        {
+            "id": 8,
+            "boss": 649,
+            "start_time": 2668905,
+            "end_time": 2807771,
+            "name": "莫加尔大王",
+            "zoneID": 565,
+            "zoneName": "格鲁尔的巢穴",
+            "zoneDifficulty": 3,
+            "size": 25,
+            "difficulty": 3,
+            "kill": true,
+            "partial": 3,
+            "bossPercentage": 1,
+            "fightPercentage": 1,
+            "lastPhaseForPercentageDisplay": 0,
+            "maps": [
+                330
+            ]
+        },
+        {
+            "id": 9,
+            "boss": 0,
+            "start_time": 2834822,
+            "end_time": 2906502,
+            "name": "戈隆祭司",
+            "zoneID": 565,
+            "zoneName": "格鲁尔的巢穴",
+            "zoneDifficulty": 3
+        },
+        {
+            "id": 10,
+            "boss": 0,
+            "start_time": 2922964,
+            "end_time": 2978595,
+            "name": "戈隆祭司",
+            "zoneID": 565,
+            "zoneName": "格鲁尔的巢穴",
+            "zoneDifficulty": 3
+        },
+        {
+            "id": 11,
+            "boss": 0,
+            "start_time": 3006772,
+            "end_time": 3067417,
+            "name": "戈隆祭司",
+            "zoneID": 565,
+            "zoneName": "格鲁尔的巢穴",
+            "zoneDifficulty": 3
+        },
+        {
+            "id": 12,
+            "boss": 650,
+            "start_time": 3252134,
+            "end_time": 3605155,
+            "name": "屠龙者格鲁尔",
+            "zoneID": 565,
+            "zoneName": "格鲁尔的巢穴",
+            "zoneDifficulty": 3,
+            "size": 25,
+            "difficulty": 3,
+            "kill": true,
+            "partial": 3,
+            "bossPercentage": 1,
+            "fightPercentage": 1,
+            "lastPhaseForPercentageDisplay": 0,
+            "maps": [
+                330
+            ]
+        }
+    ],
+    "lang": "cn",
+    "friendlies": [
+        {
+            "name": "得小落",
+            "id": 16,
+            "guid": 17100020,
+            "type": "Mage",
+            "server": "巴罗夫",
+            "icon": "Mage-Frost",
+            "fights": [
+                {
+                    "id": 1
+                },
+                {
+                    "id": 2
+                },
+                {
+                    "id": 3
+                },
+                {
+                    "id": 4
+                },
+                {
+                    "id": 5
+                },
+                {
+                    "id": 6
+                },
+                {
+                    "id": 7
+                },
+                {
+                    "id": 8
+                },
+                {
+                    "id": 9
+                },
+                {
+                    "id": 10
+                },
+                {
+                    "id": 11
+                },
+                {
+                    "id": 12
+                }
+            ]
+        },
+        {
+            "name": "七月雪盈",
+            "id": 10,
+            "guid": 51744807,
+            "type": "Paladin",
+            "server": "巴罗夫",
+            "icon": "Paladin-Holy",
+            "fights": [
+                {
+                    "id": 1
+                },
+                {
+                    "id": 2
+                },
+                {
+                    "id": 3
+                },
+                {
+                    "id": 4
+                },
+                {
+                    "id": 5
+                },
+                {
+                    "id": 6
+                },
+                {
+                    "id": 7
+                },
+                {
+                    "id": 8
+                },
+                {
+                    "id": 9
+                },
+                {
+                    "id": 10
+                },
+                {
+                    "id": 11
+                },
+                {
+                    "id": 12
+                }
+            ]
+        },
+        {
+            "name": "陈清泉学外语",
+            "id": 23,
+            "guid": 54276344,
+            "type": "Mage",
+            "server": "巴罗夫",
+            "icon": "Mage-Frost",
+            "fights": [
+                {
+                    "id": 1
+                },
+                {
+                    "id": 2
+                },
+                {
+                    "id": 3
+                },
+                {
+                    "id": 4
+                },
+                {
+                    "id": 5
+                },
+                {
+                    "id": 6
+                },
+                {
+                    "id": 7
+                },
+                {
+                    "id": 8
+                },
+                {
+                    "id": 9
+                },
+                {
+                    "id": 10
+                },
+                {
+                    "id": 11
+                },
+                {
+                    "id": 12
+                }
+            ]
+        },
+        {
+            "name": "残血欧巴",
+            "id": 32,
+            "guid": 5566986,
+            "type": "Priest",
+            "server": "巴罗夫",
+            "icon": "Priest-Discipline",
+            "fights": [
+                {
+                    "id": 1
+                },
+                {
+                    "id": 2
+                },
+                {
+                    "id": 3
+                },
+                {
+                    "id": 4
+                },
+                {
+                    "id": 5
+                },
+                {
+                    "id": 6
+                },
+                {
+                    "id": 7
+                },
+                {
+                    "id": 8
+                },
+                {
+                    "id": 9
+                },
+                {
+                    "id": 10
+                },
+                {
+                    "id": 11
+                },
+                {
+                    "id": 12
+                }
+            ]
+        },
+        {
+            "name": "海胆蒸蛋",
+            "id": 8,
+            "guid": 15613976,
+            "type": "Mage",
+            "server": "巴罗夫",
+            "icon": "Mage-Frost",
+            "fights": [
+                {
+                    "id": 1
+                },
+                {
+                    "id": 2
+                },
+                {
+                    "id": 3
+                },
+                {
+                    "id": 4
+                },
+                {
+                    "id": 5
+                },
+                {
+                    "id": 6
+                },
+                {
+                    "id": 7
+                },
+                {
+                    "id": 8
+                },
+                {
+                    "id": 9
+                },
+                {
+                    "id": 10
+                },
+                {
+                    "id": 11
+                },
+                {
+                    "id": 12
+                }
+            ]
+        },
+        {
+            "name": "认真的骑士",
+            "id": 35,
+            "guid": 54812707,
+            "type": "Paladin",
+            "server": "巴罗夫",
+            "icon": "Paladin-Holy",
+            "fights": [
+                {
+                    "id": 2
+                },
+                {
+                    "id": 3
+                },
+                {
+                    "id": 4
+                },
+                {
+                    "id": 5
+                },
+                {
+                    "id": 6
+                },
+                {
+                    "id": 7
+                },
+                {
+                    "id": 8
+                },
+                {
+                    "id": 9
+                },
+                {
+                    "id": 10
+                },
+                {
+                    "id": 11
+                },
+                {
+                    "id": 12
+                }
+            ]
+        },
+        {
+            "name": "十八岁嘎嘣脆",
+            "id": 21,
+            "guid": 53385220,
+            "type": "Priest",
+            "server": "巴罗夫",
+            "icon": "Priest-Shadow",
+            "fights": [
+                {
+                    "id": 1
+                },
+                {
+                    "id": 2
+                },
+                {
+                    "id": 3
+                },
+                {
+                    "id": 4
+                },
+                {
+                    "id": 5
+                },
+                {
+                    "id": 6
+                },
+                {
+                    "id": 8
+                },
+                {
+                    "id": 9
+                },
+                {
+                    "id": 10
+                },
+                {
+                    "id": 11
+                },
+                {
+                    "id": 12
+                }
+            ]
+        },
+        {
+            "name": "阿卡的宝藏",
+            "id": 18,
+            "guid": 6029206,
+            "type": "Hunter",
+            "server": "巴罗夫",
+            "icon": "Hunter-BeastMastery",
+            "fights": [
+                {
+                    "id": 1
+                },
+                {
+                    "id": 2
+                },
+                {
+                    "id": 3
+                },
+                {
+                    "id": 4
+                },
+                {
+                    "id": 5
+                },
+                {
+                    "id": 6
+                },
+                {
+                    "id": 7
+                },
+                {
+                    "id": 8
+                },
+                {
+                    "id": 9
+                },
+                {
+                    "id": 10
+                },
+                {
+                    "id": 11
+                },
+                {
+                    "id": 12
+                }
+            ]
+        },
+        {
+            "name": "Kance",
+            "id": 17,
+            "guid": 51605164,
+            "type": "Paladin",
+            "server": "巴罗夫",
+            "icon": "Paladin-Holy",
+            "fights": [
+                {
+                    "id": 1
+                },
+                {
+                    "id": 2
+                },
+                {
+                    "id": 3
+                },
+                {
+                    "id": 4
+                },
+                {
+                    "id": 5
+                },
+                {
+                    "id": 6
+                },
+                {
+                    "id": 7
+                },
+                {
+                    "id": 8
+                },
+                {
+                    "id": 9
+                },
+                {
+                    "id": 10
+                },
+                {
+                    "id": 11
+                },
+                {
+                    "id": 12
+                }
+            ]
+        },
+        {
+            "name": "阿格贝斯",
+            "id": 7,
+            "guid": 6732990,
+            "type": "Mage",
+            "server": "巴罗夫",
+            "icon": "Mage-Frost",
+            "fights": [
+                {
+                    "id": 1
+                },
+                {
+                    "id": 2
+                },
+                {
+                    "id": 3
+                },
+                {
+                    "id": 4
+                },
+                {
+                    "id": 5
+                },
+                {
+                    "id": 6
+                },
+                {
+                    "id": 7
+                },
+                {
+                    "id": 8
+                },
+                {
+                    "id": 9
+                },
+                {
+                    "id": 10
+                },
+                {
+                    "id": 11
+                },
+                {
+                    "id": 12
+                }
+            ]
+        },
+        {
+            "name": "怪肉肉",
+            "id": 15,
+            "guid": 6992276,
+            "type": "Warlock",
+            "server": "巴罗夫",
+            "icon": "Warlock-Destruction",
+            "fights": [
+                {
+                    "id": 1
+                },
+                {
+                    "id": 2
+                },
+                {
+                    "id": 3
+                },
+                {
+                    "id": 4
+                },
+                {
+                    "id": 5
+                },
+                {
+                    "id": 6
+                },
+                {
+                    "id": 7
+                },
+                {
+                    "id": 8
+                },
+                {
+                    "id": 9
+                },
+                {
+                    "id": 10
+                },
+                {
+                    "id": 11
+                },
+                {
+                    "id": 12
+                }
+            ]
+        },
+        {
+            "name": "苏筱菜",
+            "id": 20,
+            "guid": 51846048,
+            "type": "Mage",
+            "server": "巴罗夫",
+            "icon": "Mage-Frost",
+            "fights": [
+                {
+                    "id": 1
+                },
+                {
+                    "id": 2
+                },
+                {
+                    "id": 3
+                },
+                {
+                    "id": 4
+                },
+                {
+                    "id": 5
+                },
+                {
+                    "id": 6
+                },
+                {
+                    "id": 7
+                },
+                {
+                    "id": 8
+                },
+                {
+                    "id": 9
+                },
+                {
+                    "id": 10
+                },
+                {
+                    "id": 11
+                },
+                {
+                    "id": 12
+                }
+            ]
+        },
+        {
+            "name": "我是二毛",
+            "id": 3,
+            "guid": 7959630,
+            "type": "Warrior",
+            "server": "巴罗夫",
+            "icon": "Warrior",
+            "fights": [
+                {
+                    "id": 1
+                },
+                {
+                    "id": 2
+                },
+                {
+                    "id": 3
+                },
+                {
+                    "id": 4
+                },
+                {
+                    "id": 5
+                },
+                {
+                    "id": 6
+                },
+                {
+                    "id": 7
+                },
+                {
+                    "id": 8
+                },
+                {
+                    "id": 9
+                },
+                {
+                    "id": 10
+                },
+                {
+                    "id": 11
+                },
+                {
+                    "id": 12
+                }
+            ]
+        },
+        {
+            "name": "人造革",
+            "id": 1,
+            "guid": 8291578,
+            "type": "Hunter",
+            "server": "巴罗夫",
+            "icon": "Hunter-BeastMastery",
+            "fights": [
+                {
+                    "id": 1
+                },
+                {
+                    "id": 2
+                },
+                {
+                    "id": 3
+                },
+                {
+                    "id": 4
+                },
+                {
+                    "id": 5
+                },
+                {
+                    "id": 6
+                },
+                {
+                    "id": 7
+                },
+                {
+                    "id": 8
+                },
+                {
+                    "id": 9
+                },
+                {
+                    "id": 10
+                },
+                {
+                    "id": 11
+                },
+                {
+                    "id": 12
+                }
+            ]
+        },
+        {
+            "name": "茏飞笼飞",
+            "id": 5,
+            "guid": 17535845,
+            "type": "Druid",
+            "server": "巴罗夫",
+            "icon": "Druid",
+            "fights": [
+                {
+                    "id": 1
+                },
+                {
+                    "id": 2
+                },
+                {
+                    "id": 3
+                },
+                {
+                    "id": 4
+                },
+                {
+                    "id": 5
+                },
+                {
+                    "id": 6
+                },
+                {
+                    "id": 7
+                },
+                {
+                    "id": 8
+                },
+                {
+                    "id": 9
+                },
+                {
+                    "id": 10
+                },
+                {
+                    "id": 11
+                },
+                {
+                    "id": 12
+                }
+            ]
+        },
+        {
+            "name": "风怒雷蛇",
+            "id": 24,
+            "guid": 30108509,
+            "type": "Shaman",
+            "server": "巴罗夫",
+            "icon": "Shaman-Restoration",
+            "fights": [
+                {
+                    "id": 1
+                },
+                {
+                    "id": 2
+                },
+                {
+                    "id": 3
+                },
+                {
+                    "id": 4
+                },
+                {
+                    "id": 5
+                },
+                {
+                    "id": 6
+                },
+                {
+                    "id": 7
+                },
+                {
+                    "id": 8
+                },
+                {
+                    "id": 9
+                },
+                {
+                    "id": 10
+                },
+                {
+                    "id": 11
+                },
+                {
+                    "id": 12
+                }
+            ]
+        },
+        {
+            "name": "及他",
+            "id": 13,
+            "guid": 54166587,
+            "type": "Mage",
+            "server": "巴罗夫",
+            "icon": "Mage-Frost",
+            "fights": [
+                {
+                    "id": 1
+                },
+                {
+                    "id": 2
+                },
+                {
+                    "id": 3
+                },
+                {
+                    "id": 4
+                },
+                {
+                    "id": 5
+                },
+                {
+                    "id": 6
+                },
+                {
+                    "id": 7
+                },
+                {
+                    "id": 8
+                },
+                {
+                    "id": 9
+                },
+                {
+                    "id": 10
+                },
+                {
+                    "id": 11
+                },
+                {
+                    "id": 12
+                }
+            ]
+        },
+        {
+            "name": "包子脸萌萌",
+            "id": 12,
+            "guid": 52065880,
+            "type": "Druid",
+            "server": "巴罗夫",
+            "icon": "Druid-Restoration",
+            "fights": [
+                {
+                    "id": 1
+                },
+                {
+                    "id": 2
+                },
+                {
+                    "id": 3
+                },
+                {
+                    "id": 4
+                },
+                {
+                    "id": 5
+                },
+                {
+                    "id": 6
+                },
+                {
+                    "id": 7
+                },
+                {
+                    "id": 8
+                },
+                {
+                    "id": 9
+                },
+                {
+                    "id": 10
+                },
+                {
+                    "id": 11
+                },
+                {
+                    "id": 12
+                }
+            ]
+        },
+        {
+            "name": "野蛮的魔能猎犬",
+            "id": 173,
+            "guid": 18847,
+            "type": "NPC",
+            "icon": "custom-icon-ability_physical_taunt",
+            "fights": [
+                {
+                    "id": 8,
+                    "instances": 2,
+                    "groups": 1
+                }
+            ]
+        },
+        {
+            "name": "伯邑考",
+            "id": 9,
+            "guid": 53324644,
+            "type": "Warlock",
+            "server": "巴罗夫",
+            "icon": "Warlock-Destruction",
+            "fights": [
+                {
+                    "id": 1
+                },
+                {
+                    "id": 2
+                },
+                {
+                    "id": 3
+                },
+                {
+                    "id": 4
+                },
+                {
+                    "id": 5
+                },
+                {
+                    "id": 6
+                },
+                {
+                    "id": 7
+                },
+                {
+                    "id": 8
+                },
+                {
+                    "id": 9
+                },
+                {
+                    "id": 10
+                },
+                {
+                    "id": 11
+                },
+                {
+                    "id": 12
+                }
+            ]
+        },
+        {
+            "name": "独影孤狼",
+            "id": 4,
+            "guid": 52333993,
+            "type": "Hunter",
+            "server": "巴罗夫",
+            "icon": "Hunter-BeastMastery",
+            "fights": [
+                {
+                    "id": 1
+                },
+                {
+                    "id": 2
+                },
+                {
+                    "id": 3
+                },
+                {
+                    "id": 4
+                },
+                {
+                    "id": 5
+                },
+                {
+                    "id": 6
+                },
+                {
+                    "id": 7
+                },
+                {
+                    "id": 8
+                },
+                {
+                    "id": 9
+                },
+                {
+                    "id": 10
+                },
+                {
+                    "id": 11
+                },
+                {
+                    "id": 12
+                }
+            ]
+        },
+        {
+            "name": "玻璃鱼",
+            "id": 22,
+            "guid": 55006437,
+            "type": "Mage",
+            "server": "巴罗夫",
+            "icon": "Mage-Frost",
+            "fights": [
+                {
+                    "id": 1
+                },
+                {
+                    "id": 2
+                },
+                {
+                    "id": 3
+                },
+                {
+                    "id": 4
+                },
+                {
+                    "id": 5
+                },
+                {
+                    "id": 6
+                },
+                {
+                    "id": 7
+                },
+                {
+                    "id": 8
+                },
+                {
+                    "id": 9
+                },
+                {
+                    "id": 10
+                },
+                {
+                    "id": 11
+                },
+                {
+                    "id": 12
+                }
+            ]
+        },
+        {
+            "name": "Omika",
+            "id": 14,
+            "guid": 51950734,
+            "type": "Rogue",
+            "server": "巴罗夫",
+            "icon": "Rogue-Combat",
+            "fights": [
+                {
+                    "id": 1
+                },
+                {
+                    "id": 2
+                },
+                {
+                    "id": 3
+                },
+                {
+                    "id": 4
+                },
+                {
+                    "id": 5
+                },
+                {
+                    "id": 6
+                },
+                {
+                    "id": 7
+                },
+                {
+                    "id": 8
+                },
+                {
+                    "id": 9
+                },
+                {
+                    "id": 10
+                },
+                {
+                    "id": 11
+                },
+                {
+                    "id": 12
+                }
+            ]
+        },
+        {
+            "name": "夜风追云",
+            "id": 30,
+            "guid": 7573985,
+            "type": "Druid",
+            "server": "巴罗夫",
+            "icon": "Druid",
+            "fights": [
+                {
+                    "id": 1
+                },
+                {
+                    "id": 2
+                },
+                {
+                    "id": 3
+                },
+                {
+                    "id": 4
+                },
+                {
+                    "id": 5
+                },
+                {
+                    "id": 6
+                },
+                {
+                    "id": 7
+                },
+                {
+                    "id": 8
+                },
+                {
+                    "id": 9
+                },
+                {
+                    "id": 10
+                },
+                {
+                    "id": 11
+                },
+                {
+                    "id": 12
+                }
+            ]
+        },
+        {
+            "name": "Shalom",
+            "id": 11,
+            "guid": 46242047,
+            "type": "Rogue",
+            "server": "巴罗夫",
+            "icon": "Rogue-Combat",
+            "fights": [
+                {
+                    "id": 1
+                },
+                {
+                    "id": 2
+                },
+                {
+                    "id": 3
+                },
+                {
+                    "id": 4
+                },
+                {
+                    "id": 5
+                },
+                {
+                    "id": 6
+                },
+                {
+                    "id": 7
+                },
+                {
+                    "id": 8
+                },
+                {
+                    "id": 9
+                },
+                {
+                    "id": 10
+                },
+                {
+                    "id": 11
+                },
+                {
+                    "id": 12
+                }
+            ]
+        },
+        {
+            "name": "Miemie",
+            "id": 6,
+            "guid": 7745220,
+            "type": "Warrior",
+            "server": "巴罗夫",
+            "icon": "Warrior",
+            "fights": [
+                {
+                    "id": 1
+                },
+                {
+                    "id": 2
+                },
+                {
+                    "id": 3
+                },
+                {
+                    "id": 4
+                },
+                {
+                    "id": 5
+                },
+                {
+                    "id": 6
+                },
+                {
+                    "id": 7
+                },
+                {
+                    "id": 8
+                },
+                {
+                    "id": 9
+                },
+                {
+                    "id": 10
+                },
+                {
+                    "id": 11
+                },
+                {
+                    "id": 12
+                }
+            ]
+        }
+    ],
+    "enemies": [
+        {
+            "name": "深渊燃魔",
+            "id": 44,
+            "guid": 17454,
+            "type": "NPC",
+            "icon": "custom-icon-spell_fire_fireball",
+            "fights": [
+                {
+                    "id": 4,
+                    "instances": 6,
+                    "groups": 1
+                },
+                {
+                    "id": 5,
+                    "instances": 6,
+                    "groups": 1
+                },
+                {
+                    "id": 6,
+                    "instances": 7,
+                    "groups": 1
+                }
+            ]
+        },
+        {
+            "name": "玛瑟里顿",
+            "id": 33,
+            "guid": 17257,
+            "type": "Boss",
+            "icon": "custom-icon-ability_warrior_cleave",
+            "fights": [
+                {
+                    "id": 1,
+                    "instances": 1,
+                    "groups": 1
+                },
+                {
+                    "id": 6,
+                    "instances": 1,
+                    "groups": 2
+                }
+            ]
+        },
+        {
+            "name": "屠龙者格鲁尔",
+            "id": 175,
+            "guid": 19044,
+            "type": "Boss",
+            "icon": "custom-icon-ability_golemstormbolt",
+            "fights": [
+                {
+                    "id": 12,
+                    "instances": 1
+                }
+            ]
+        },
+        {
+            "name": "地狱火导魔者",
+            "id": 39,
+            "guid": 17256,
+            "type": "NPC",
+            "icon": "custom-icon-spell_shadow_shadowbolt",
+            "fights": [
+                {
+                    "id": 4,
+                    "instances": 5,
+                    "groups": 1
+                },
+                {
+                    "id": 5,
+                    "instances": 5,
+                    "groups": 1
+                },
+                {
+                    "id": 6,
+                    "instances": 5,
+                    "groups": 1
+                }
+            ]
+        },
+        {
+            "name": "盲眼先知",
+            "id": 168,
+            "guid": 18836,
+            "type": "Boss",
+            "icon": "Boss",
+            "fights": [
+                {
+                    "id": 8,
+                    "instances": 1
+                }
+            ]
+        },
+        {
+            "name": "野蛮的魔能猎犬",
+            "id": 173,
+            "guid": 18847,
+            "type": "NPC",
+            "icon": "custom-icon-ability_physical_taunt",
+            "fights": [
+                {
+                    "id": 8,
+                    "instances": 2,
+                    "groups": 1
+                }
+            ]
+        },
+        {
+            "name": "克洛什·火拳",
+            "id": 171,
+            "guid": 18832,
+            "type": "Boss",
+            "icon": "custom-icon-spell_fire_flamebolt",
+            "fights": [
+                {
+                    "id": 8,
+                    "instances": 1,
+                    "groups": 2
+                }
+            ]
+        },
+        {
+            "name": "巢穴卫兵",
+            "id": 174,
+            "guid": 19389,
+            "type": "NPC",
+            "icon": "custom-icon-ability_warrior_cleave",
+            "fights": [
+                {
+                    "id": 9,
+                    "instances": 2,
+                    "groups": 1
+                },
+                {
+                    "id": 10,
+                    "instances": 1,
+                    "groups": 1
+                },
+                {
+                    "id": 11,
+                    "instances": 1,
+                    "groups": 1
+                }
+            ]
+        },
+        {
+            "name": "戈隆祭司",
+            "id": 166,
+            "guid": 21350,
+            "type": "NPC",
+            "icon": "custom-icon-spell_shadow_psychicscream",
+            "fights": [
+                {
+                    "id": 7,
+                    "instances": 2,
+                    "groups": 1
+                },
+                {
+                    "id": 9,
+                    "instances": 1,
+                    "groups": 1
+                },
+                {
+                    "id": 10,
+                    "instances": 2,
+                    "groups": 1
+                },
+                {
+                    "id": 11,
+                    "instances": 2,
+                    "groups": 1
+                }
+            ]
+        },
+        {
+            "name": "召唤者沃尔姆",
+            "id": 169,
+            "guid": 18834,
+            "type": "Boss",
+            "icon": "custom-icon-spell_shadow_deathcoil",
+            "fights": [
+                {
+                    "id": 8,
+                    "instances": 1
+                }
+            ]
+        },
+        {
+            "name": "疯狂的基戈尔",
+            "id": 172,
+            "guid": 18835,
+            "type": "Boss",
+            "icon": "custom-icon-spell_nature_wispsplode",
+            "fights": [
+                {
+                    "id": 8,
+                    "instances": 1
+                }
+            ]
+        },
+        {
+            "name": "地狱火典狱官",
+            "id": 2,
+            "guid": 18829,
+            "type": "NPC",
+            "icon": "custom-icon-spell_shadow_shadowbolt",
+            "fights": [
+                {
+                    "id": 1,
+                    "instances": 6,
+                    "groups": 1
+                },
+                {
+                    "id": 2,
+                    "instances": 3,
+                    "groups": 1
+                },
+                {
+                    "id": 3,
+                    "instances": 3,
+                    "groups": 1
+                }
+            ]
+        },
+        {
+            "name": "莫加尔大王",
+            "id": 170,
+            "guid": 18831,
+            "type": "Boss",
+            "icon": "custom-icon-ability_whirlwind",
+            "fights": [
+                {
+                    "id": 8,
+                    "instances": 1
+                }
+            ]
+        }
+    ],
+    "friendlyPets": [
+        {
+            "name": "匹兹科尔",
+            "id": 47,
+            "guid": 147512,
+            "type": "Pet",
+            "icon": "abilities/spell_shadow_summonimp",
+            "petOwner": 15,
+            "fights": [
+                {
+                    "id": 12,
+                    "instances": 1
+                }
+            ]
+        },
+        {
+            "name": "风蛇",
+            "id": 19,
+            "guid": 16159506,
+            "type": "Pet",
+            "icon": "abilities/ability_hunter_beastsoothe",
+            "petOwner": 4,
+            "fights": [
+                {
+                    "id": 1,
+                    "instances": 1
+                },
+                {
+                    "id": 2,
+                    "instances": 1
+                },
+                {
+                    "id": 3,
+                    "instances": 1
+                },
+                {
+                    "id": 4,
+                    "instances": 1
+                },
+                {
+                    "id": 5,
+                    "instances": 1
+                },
+                {
+                    "id": 6,
+                    "instances": 1
+                },
+                {
+                    "id": 7,
+                    "instances": 1
+                },
+                {
+                    "id": 8,
+                    "instances": 1
+                },
+                {
+                    "id": 9,
+                    "instances": 1
+                },
+                {
+                    "id": 10,
+                    "instances": 1
+                },
+                {
+                    "id": 11,
+                    "instances": 1
+                },
+                {
+                    "id": 12,
+                    "instances": 1
+                }
+            ]
+        },
+        {
+            "name": "水元素",
+            "id": 29,
+            "guid": 510,
+            "type": "Pet",
+            "icon": "abilities/spell_frost_summonwaterelemental_2",
+            "petOwner": 20,
+            "fights": [
+                {
+                    "id": 1,
+                    "instances": 1
+                },
+                {
+                    "id": 3,
+                    "instances": 1
+                },
+                {
+                    "id": 4,
+                    "instances": 1
+                },
+                {
+                    "id": 5,
+                    "instances": 1
+                },
+                {
+                    "id": 6,
+                    "instances": 3
+                },
+                {
+                    "id": 8,
+                    "instances": 1
+                },
+                {
+                    "id": 12,
+                    "instances": 2
+                }
+            ]
+        },
+        {
+            "name": "水元素",
+            "id": 41,
+            "guid": 510,
+            "type": "Pet",
+            "icon": "abilities/spell_frost_summonwaterelemental_2",
+            "petOwner": 22,
+            "fights": [
+                {
+                    "id": 4,
+                    "instances": 1
+                },
+                {
+                    "id": 5,
+                    "instances": 1
+                },
+                {
+                    "id": 6,
+                    "instances": 4
+                },
+                {
+                    "id": 8,
+                    "instances": 2
+                },
+                {
+                    "id": 12,
+                    "instances": 3
+                }
+            ]
+        },
+        {
+            "name": "水元素",
+            "id": 45,
+            "guid": 510,
+            "type": "Pet",
+            "icon": "abilities/spell_frost_summonwaterelemental_2",
+            "petOwner": 23,
+            "fights": [
+                {
+                    "id": 4,
+                    "instances": 1
+                },
+                {
+                    "id": 5,
+                    "instances": 1
+                },
+                {
+                    "id": 6,
+                    "instances": 3
+                },
+                {
+                    "id": 8,
+                    "instances": 1
+                },
+                {
+                    "id": 12,
+                    "instances": 3
+                }
+            ]
+        },
+        {
+            "name": "角气冬虫虫",
+            "id": 28,
+            "guid": 15720427,
+            "type": "Pet",
+            "icon": "abilities/ability_hunter_beastcall",
+            "petOwner": 1,
+            "fights": [
+                {
+                    "id": 1,
+                    "instances": 1
+                },
+                {
+                    "id": 2,
+                    "instances": 1
+                },
+                {
+                    "id": 3,
+                    "instances": 1
+                },
+                {
+                    "id": 4,
+                    "instances": 1
+                },
+                {
+                    "id": 5,
+                    "instances": 1
+                },
+                {
+                    "id": 6,
+                    "instances": 1
+                },
+                {
+                    "id": 7,
+                    "instances": 1
+                },
+                {
+                    "id": 8,
+                    "instances": 1
+                },
+                {
+                    "id": 9,
+                    "instances": 1
+                },
+                {
+                    "id": 10,
+                    "instances": 1
+                },
+                {
+                    "id": 11,
+                    "instances": 1
+                },
+                {
+                    "id": 12,
+                    "instances": 1
+                }
+            ]
+        },
+        {
+            "name": "暗影魔",
+            "id": 52,
+            "guid": 19668,
+            "type": "Pet",
+            "icon": "abilities/spell_shadow_shadowfiend",
+            "petOwner": 21,
+            "fights": [
+                {
+                    "id": 5,
+                    "instances": 1
+                },
+                {
+                    "id": 6,
+                    "instances": 2
+                },
+                {
+                    "id": 8,
+                    "instances": 1
+                },
+                {
+                    "id": 12,
+                    "instances": 1
+                }
+            ]
+        },
+        {
+            "name": "水元素",
+            "id": 26,
+            "guid": 510,
+            "type": "Pet",
+            "icon": "abilities/spell_frost_summonwaterelemental_2",
+            "petOwner": 16,
+            "fights": [
+                {
+                    "id": 1,
+                    "instances": 1
+                },
+                {
+                    "id": 4,
+                    "instances": 1
+                },
+                {
+                    "id": 5,
+                    "instances": 1
+                },
+                {
+                    "id": 6,
+                    "instances": 4
+                },
+                {
+                    "id": 8,
+                    "instances": 2
+                },
+                {
+                    "id": 12,
+                    "instances": 3
+                }
+            ]
+        },
+        {
+            "name": "角疼冬虫虫",
+            "id": 31,
+            "guid": 15754286,
+            "type": "Pet",
+            "icon": "abilities/ability_hunter_beastcall",
+            "petOwner": 18,
+            "fights": [
+                {
+                    "id": 2,
+                    "instances": 1
+                },
+                {
+                    "id": 3,
+                    "instances": 1
+                },
+                {
+                    "id": 4,
+                    "instances": 1
+                },
+                {
+                    "id": 5,
+                    "instances": 1
+                },
+                {
+                    "id": 6,
+                    "instances": 1
+                },
+                {
+                    "id": 7,
+                    "instances": 1
+                },
+                {
+                    "id": 8,
+                    "instances": 1
+                },
+                {
+                    "id": 9,
+                    "instances": 1
+                },
+                {
+                    "id": 10,
+                    "instances": 1
+                },
+                {
+                    "id": 11,
+                    "instances": 1
+                },
+                {
+                    "id": 12,
+                    "instances": 1
+                }
+            ]
+        },
+        {
+            "name": "水元素",
+            "id": 40,
+            "guid": 510,
+            "type": "Pet",
+            "icon": "abilities/spell_frost_summonwaterelemental_2",
+            "petOwner": 7,
+            "fights": [
+                {
+                    "id": 4,
+                    "instances": 2
+                },
+                {
+                    "id": 5,
+                    "instances": 1
+                },
+                {
+                    "id": 6,
+                    "instances": 3
+                },
+                {
+                    "id": 8,
+                    "instances": 2
+                },
+                {
+                    "id": 12,
+                    "instances": 3
+                }
+            ]
+        },
+        {
+            "name": "水元素",
+            "id": 50,
+            "guid": 510,
+            "type": "Pet",
+            "icon": "abilities/spell_frost_summonwaterelemental_2",
+            "petOwner": 8,
+            "fights": [
+                {
+                    "id": 5,
+                    "instances": 1
+                },
+                {
+                    "id": 6,
+                    "instances": 4
+                },
+                {
+                    "id": 8,
+                    "instances": 1
+                },
+                {
+                    "id": 10,
+                    "instances": 1
+                },
+                {
+                    "id": 12,
+                    "instances": 3
+                }
+            ]
+        },
+        {
+            "name": "维尔伊拉",
+            "id": 49,
+            "guid": 15789953,
+            "type": "Pet",
+            "icon": "abilities/spell_shadow_summonsuccubus",
+            "petOwner": 9,
+            "fights": [
+                {
+                    "id": 5,
+                    "instances": 1
+                }
+            ]
+        },
+        {
+            "name": "水元素",
+            "id": 51,
+            "guid": 510,
+            "type": "Pet",
+            "icon": "abilities/spell_frost_summonwaterelemental_2",
+            "petOwner": 13,
+            "fights": [
+                {
+                    "id": 5,
+                    "instances": 1
+                },
+                {
+                    "id": 6,
+                    "instances": 3
+                },
+                {
+                    "id": 8,
+                    "instances": 2
+                },
+                {
+                    "id": 10,
+                    "instances": 1
+                },
+                {
+                    "id": 12,
+                    "instances": 2
+                }
+            ]
+        }
+    ],
+    "enemyPets": [],
+    "phases": [],
+    "logVersion": 14,
+    "gameVersion": 3,
+    "title": "MSLD+GLR 第二车",
+    "owner": "luwenbin91",
+    "start": 1626612581559,
+    "end": 1626616246789,
+    "zone": 1008,
+    "exportedCharacters": [
+        {
+            "id": 59853854,
+            "name": "Kance",
+            "server": "巴罗夫",
+            "region": "CN"
+        },
+        {
+            "id": 41915070,
+            "name": "Miemie",
+            "server": "巴罗夫",
+            "region": "CN"
+        },
+        {
+            "id": 60550533,
+            "name": "Omika",
+            "server": "巴罗夫",
+            "region": "CN"
+        },
+        {
+            "id": 41893540,
+            "name": "Shalom",
+            "server": "巴罗夫",
+            "region": "CN"
+        },
+        {
+            "id": 60481673,
+            "name": "七月雪盈",
+            "server": "巴罗夫",
+            "region": "CN"
+        },
+        {
+            "id": 41893525,
+            "name": "人造革",
+            "server": "巴罗夫",
+            "region": "CN"
+        },
+        {
+            "id": 59894355,
+            "name": "伯邑考",
+            "server": "巴罗夫",
+            "region": "CN"
+        },
+        {
+            "id": 60062837,
+            "name": "包子脸萌萌",
+            "server": "巴罗夫",
+            "region": "CN"
+        },
+        {
+            "id": 59894358,
+            "name": "十八岁嘎嘣脆",
+            "server": "巴罗夫",
+            "region": "CN"
+        },
+        {
+            "id": 44126610,
+            "name": "及他",
+            "server": "巴罗夫",
+            "region": "CN"
+        },
+        {
+            "id": 60417764,
+            "name": "夜风追云",
+            "server": "巴罗夫",
+            "region": "CN"
+        },
+        {
+            "id": 42055519,
+            "name": "得小落",
+            "server": "巴罗夫",
+            "region": "CN"
+        },
+        {
+            "id": 45759338,
+            "name": "怪肉肉",
+            "server": "巴罗夫",
+            "region": "CN"
+        },
+        {
+            "id": 42323885,
+            "name": "我是二毛",
+            "server": "巴罗夫",
+            "region": "CN"
+        },
+        {
+            "id": 41893518,
+            "name": "残血欧巴",
+            "server": "巴罗夫",
+            "region": "CN"
+        },
+        {
+            "id": 41956223,
+            "name": "海胆蒸蛋",
+            "server": "巴罗夫",
+            "region": "CN"
+        },
+        {
+            "id": 60269289,
+            "name": "独影孤狼",
+            "server": "巴罗夫",
+            "region": "CN"
+        },
+        {
+            "id": 60328216,
+            "name": "玻璃鱼",
+            "server": "巴罗夫",
+            "region": "CN"
+        },
+        {
+            "id": 60550535,
+            "name": "苏筱菜",
+            "server": "巴罗夫",
+            "region": "CN"
+        },
+        {
+            "id": 41834983,
+            "name": "茏飞笼飞",
+            "server": "巴罗夫",
+            "region": "CN"
+        },
+        {
+            "id": 60550534,
+            "name": "认真的骑士",
+            "server": "巴罗夫",
+            "region": "CN"
+        },
+        {
+            "id": 41893532,
+            "name": "阿卡的宝藏",
+            "server": "巴罗夫",
+            "region": "CN"
+        },
+        {
+            "id": 41893512,
+            "name": "阿格贝斯",
+            "server": "巴罗夫",
+            "region": "CN"
+        },
+        {
+            "id": 60550532,
+            "name": "陈清泉学外语",
+            "server": "巴罗夫",
+            "region": "CN"
+        },
+        {
+            "id": 50238084,
+            "name": "风怒雷蛇",
+            "server": "巴罗夫",
+            "region": "CN"
+        }
+    ]
+}
