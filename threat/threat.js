@@ -523,7 +523,10 @@ class NPC extends Unit {
           line: { width: unitInfo.borderWidth, color: unitInfo.borderColor },
         },
       };
-      plotData.push(trace);
+      // Exclude pet
+      if (unitInfo.target.type !== 'Pet') {
+        plotData.push(trace);
+      }
       if (colorByClass) trace.marker.color = classColors[u.type];
       if (u.global && u.global.color && u.global.color !== '#000000')
         trace.marker.color = u.global.color;

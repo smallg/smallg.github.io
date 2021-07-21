@@ -58,11 +58,11 @@ const buffMultipliers = {
 // The leaf elements are functions (buffs,rank) => threatCoefficient
 const talents = {
   Warrior: {
-    Defiance: {
+    'Defiance': {
       maxRank: 5,
       coeff: function (buffs, rank = 5) {
         if (!(71 in buffs)) return getThreatCoefficient(1);
-        return getThreatCoefficient(1 + 0.03 * rank);
+        return getThreatCoefficient(1.43);
       },
     },
   },
@@ -579,8 +579,24 @@ function handler_heal(ev, fight) {
   threatFunctions.unitThreatenEnemiesSplit(ev, 'source', fight, ev.amount / 2);
 }
 
+// TODO
+function handler_threatOnHuiMie() {
+  return (ev, fight) => {
+    console.log('fk', ev, ev.hitType, ev.amount)
+    if (ev.type !== 'damage' || ev.hitType > 6 || ev.hitType === 0) return;
+    threatFunctions.sourceThreatenTarget(
+      ev,
+      fight,
+      ev.amount + 176
+    );
+  };
+}
+
 function handler_threatOnHit(threatValue) {
   return (ev, fight) => {
+    if (threatValue === 222){
+      console.log('fk', ev)
+    }
     if (ev.type !== 'damage' || ev.hitType > 6 || ev.hitType === 0) return;
     threatFunctions.sourceThreatenTarget(
       ev,
@@ -1033,38 +1049,42 @@ const spellFunctions = {
   17923: handler_modDamage(2), // Searing Pain r6
   27210: handler_modDamage(2), // Searing Pain r7
   30459: handler_modDamage(2), // Searing Pain r8
+  // 暗影箭
+  27209: handler_damage,
+
   // 灵魂碎裂
   29858: handler_soulshatter,
 
   // Shaman
-  8042: handler_modDamage(2), // Earth Shock r1
+  8042: handler_modDamage(2), // Earth Shock r1 地震术
   8044: handler_modDamage(2), // Earth Shock r2
   8045: handler_modDamage(2), // Earth Shock r3
   8046: handler_modDamage(2), // Earth Shock r4
   10412: handler_modDamage(2), // Earth Shock r5
   10413: handler_modDamage(2), // Earth Shock r6
   10414: handler_modDamage(2), // Earth Shock r7
+  25454: handler_modDamage(2), // Earth Shock r8
 
   // From ResultsMayVary https://resultsmayvary.github.io/ClassicThreatPerSecond/
   1: handler_damage,
   /* Consumables */
-  11374: handler_threatOnDebuff(90, 'Gift of Arthas'),
+  11374: handler_threatOnDebuff(90, 'Gift of Arthas'), //阿尔萨斯的礼物
   /* Damage/Weapon Procs */
-  20007: handler_zero, //("Heroic Strength (Crusader)"),
-  18138: handler_damage, //("Shadow Bolt (Deathbringer Proc)"),
-  24388: handler_damage, //("Brain Damage (Lobotomizer Proc)"),
-  23267: handler_damage, //("Firebolt (Perdition's Proc)"),
-  18833: handler_damage, //("Firebolt (Alcor's Proc)"),
+  20007: handler_zero, //("Heroic Strength (Crusader)"), 神圣力量，十字军
+  18138: handler_damage, //("Shadow Bolt (Deathbringer Proc)"), 暗影箭
+  24388: handler_damage, //("Brain Damage (Lobotomizer Proc)"), 脑部损伤
+  23267: handler_damage, //("Firebolt (Perdition's Proc)"), 火球术
+  18833: handler_damage, //("Firebolt (Alcor's Proc)"), 火焰箭
 
-  21992: threatFunctions.concat(handler_damage, handler_threatOnDebuff(90)), // Thunderfury
-  27648: handler_threatOnDebuff(145, 'Thunderfury'),
+  21992: threatFunctions.concat(handler_damage, handler_threatOnDebuff(63)), // Thunderfury 雷霆之怒，风剑
+  27648: handler_threatOnDebuff(135, 'Thunderfury'), // 雷霆之怒
 
   /* Thorn Effects */
-  9910: handler_damage, //("Thorns"),  //Thorns (Rank 6)
-  17275: handler_damage, //("Heart of the Scale"), //Heart of the Scale
-  22600: handler_damage, //("Force Reactive Disk"), //Force Reactive
-  11350: handler_zero, //("Oil of Immolation"),   //Oil of Immolation (buff)
-  11351: handler_damage, //("Oil of Immolation"), //Oil of Immolation (dmg)
+  26992: handler_damage, //("Thorns"),  //Thorns (Rank 7) 荆棘术
+  17275: handler_damage, //("Heart of the Scale"), //Heart of the Scale 龙鳞之心
+  22600: handler_damage, //("Force Reactive Disk"), //Force Reactive 力反馈盾牌
+  11350: handler_zero, //("Oil of Immolation"),   //Oil of Immolation (buff) 火焰之盾
+  11351: handler_damage, //("Oil of Immolation"), //Oil of Immolation (dmg) 火焰之盾
 
   /* Explosives */
   13241: handler_damage, //("Goblin Sapper Charge"), //Goblin Sapper Charge
@@ -1088,24 +1108,29 @@ const spellFunctions = {
   17543: handler_zero, //("Fire Protection"), //Fire Protection 防护火焰
   17548: handler_zero, //("Greater Shadow Protection Potion"), //Greater Shadow Protection Potion 防护暗影
   18125: handler_zero, //("Blessed Sunfruit"), //Blessed Sunfruit 神圣太阳果
-  17538: handler_zero, //("Elixir of the Mongoose"), //Elixir of the Mongoose 
-  11359: handler_zero, //("Restorative Potion (Restoration) Buff"), //Restorative Potion (Restoration) Buff
-  23396: handler_zero, //("Restorative Potion (Restoration) Dispel"), //Restorative Potion (Restoration) Dispel
+  17538: handler_zero, //("Elixir of the Mongoose"), //Elixir of the Mongoose 猫鼬
+  11359: handler_zero, //("Restorative Potion (Restoration) Buff"), //Restorative Potion (Restoration) Buff 恢复
+  23396: handler_zero, //("Restorative Potion (Restoration) Dispel"), //Restorative Potion (Restoration) Dispel 恢复
 
   /* Physical */
-  12721: handler_damage, //("Deep Wounds"),
-  6552: handler_threatOnHit(76, 'Pummel (Rank 1)'), //TODO: Verify these values ingame
-  6554: handler_threatOnHit(116, 'Pummel (Rank 2)'),
+  12721: handler_damage, //("Deep Wounds"), 重伤
+  6552: handler_threatOnHit(76, 'Pummel (Rank 1)'), //TODO: Verify these values ingame 拳击
+  6554: handler_threatOnHit(116, 'Pummel (Rank 2)'), // 拳击
 
-  23881: handler_damage, //("Bloodthirst"), //Rank 1
+  23881: handler_damage, //("Bloodthirst"), //Rank 1 嗜血
   23892: handler_damage, //("Bloodthirst"), //Rank 2
   23893: handler_damage, //("Bloodthirst"), //Rank 3
   23894: handler_damage, //("Bloodthirst"), //Rank 4
-  23888: handler_zero, //("Bloodthirst"),   //Buff
-  23885: handler_zero, //("Bloodthirst"),   //Buff
-  23891: handler_heal, // BT heal buff
+  25251: handler_damage, //("Bloodthirst"), //Rank 5
+  30335: handler_damage, //("Bloodthirst"), //Rank 6
+  23888: handler_zero, //("Bloodthirst"),   //Buff 嗜血
+  23885: handler_zero, //("Bloodthirst"),   //Buff 嗜血
+  23891: handler_heal, // BT heal buff 嗜血
 
-  //Heroic Strike
+  // 致死打击
+  30330: handler_damage, // Rank 6
+
+  //Heroic Strike 英勇打击
   78: handler_threatOnHit(16, 'Heroic Strike'),
   284: handler_threatOnHit(39, 'Heroic Strike'),
   285: handler_threatOnHit(59, 'Heroic Strike'),
@@ -1114,190 +1139,228 @@ const spellFunctions = {
   11565: handler_threatOnHit(118, 'Heroic Strike'),
   11566: handler_threatOnHit(137, 'Heroic Strike'),
   11567: handler_threatOnHit(145, 'Heroic Strike'),
-  25286: handler_threatOnHit(175, 'Heroic Strike'), // (AQ)
+  25286: handler_threatOnHit(175, 'Heroic Strike'),
+  29707: handler_threatOnHit(184, 'Heroic Strike'),
+  30324: handler_threatOnHit(193, 'Heroic Strike'), // (AQ)
 
-  //Shield Slam
+  //Shield Slam 盾牌猛击
   23922: handler_threatOnHit(178, 'Shield Slam (Rank 1)'), //Rank 1
   23923: handler_threatOnHit(203, 'Shield Slam (Rank 2)'), //Rank 2
   23924: handler_threatOnHit(229, 'Shield Slam (Rank 3)'), //Rank 3
-  23925: handler_threatOnHit(254, 'Shield Slam'), //Rank 4
+  23925: handler_threatOnHit(254, 'Shield Slam (Rank 4)'), //Rank 4
+  25258: handler_threatOnHit(280, 'Shield Slam (Rank 5)'), //Rank 5
+  30356: handler_threatOnHit(304, 'Shield Slam (Rank 6)'), //Rank 6
 
-  // Shield Bash
+  // Shield Bash 盾击
   72: handler_modDamagePlusThreat(1.5, 36),
   1671: handler_modDamagePlusThreat(1.5, 96),
-  1672: handler_modDamagePlusThreat(1.5, 96), // THREAT UNKNOWN
+  1672: handler_modDamagePlusThreat(1.5, 96),
+  20704: handler_modDamagePlusThreat(1.5, 191), // THREAT UNKNOWN
 
-  //Revenge
+  //Revenge 复仇
   11601: handler_modDamagePlusThreat(2.25, 243), //Rank 5
   25288: handler_modDamagePlusThreat(2.25, 270), //Rank 6 (AQ)
-  12798: handler_zero, //("Revenge Stun"),           //Revenge Stun
+  30357: handler_modDamagePlusThreat(2.25, 270), //Rank 8 (AQ)
+  12798: handler_zero, //("Revenge Stun"),           //Revenge Stun 复仇昏迷
 
-  //Cleave
+  //Cleave 顺劈斩
   845: handler_threatOnHit(10, 'Cleave'), //Rank 1
   7369: handler_threatOnHit(40, 'Cleave'), //Rank 2
   11608: handler_threatOnHit(60, 'Cleave'), //Rank 3
   11609: handler_threatOnHit(70, 'Cleave'), //Rank 4
   20569: handler_threatOnHit(100, 'Cleave'), //Rank 5
+  25231: handler_threatOnHit(124, 'Cleave'), //Rank 6
 
-  //Whirlwind
+  //Whirlwind 旋风斩
   1680: handler_modDamage(1.25), //("Whirlwind"), //Whirlwind
+  // 雷霆
   6343: handler_modDamage(2.5), // Thunder Clap r1
   8198: handler_modDamage(2.5), // Thunder Clap r2
   8204: handler_modDamage(2.5), // Thunder Clap r3
   8205: handler_modDamage(2.5), // Thunder Clap r4
   11580: handler_modDamage(2.5), // Thunder Clap r5
   11581: handler_modDamage(2.5), // Thunder Clap r6
+  25264: handler_modDamage(2.5), // Thunder Clap r7
 
-  //Hamstring
+  //Hamstring 断筋
   1715: handler_modDamagePlusThreat(1.25, 20), // R1
   7372: handler_threatOnHit(101), // R2, from outdated sheet
   7373: handler_threatOnHit(145, 'Hamstring'),
+  25212: handler_threatOnHit(190, 'Hamstring'),
 
-  //Intercept
+  //Intercept 拦截
   20252: handler_modDamage(2), //Intercept
-  20253: handler_zero, //("Intercept Stun"),         //Intercept Stun (Rank 1)
+  20253: handler_zero, //("Intercept Stun"),         //Intercept Stun (Rank 1) 拦截昏迷
   20616: handler_modDamage(2), //Intercept (Rank 2)
   20614: handler_zero, //("Intercept Stun"),         //Intercept Stun (Rank 2)
   20617: handler_modDamage(2), //Intercept (Rank 3)
   20615: handler_zero, //("Intercept Stun"),         //Intercept Stun (Rank 3)
+  25272: handler_modDamage(2), //Intercept (Rank 4)
+  25273: handler_zero, //("Intercept Stun"),         //Intercept Stun (Rank 4)
 
-  //Execute
+  //Execute 斩杀
   20647: handler_modDamage(1.25, 'Execute'),
+  25236: handler_modDamage(1.25, 'Execute'), //Rank 7
 
   /* Abilities */
-  //Sunder Armor
+  //Sunder Armor 破甲攻击
   7386: handler_castCanMiss(45), // Rank 1
   11597: handler_castCanMiss(261, 'Sunder Armor'), //Rank 5
+  25225: handler_castCanMiss(301, 'Sunder Armor'), //Rank 6
 
-  //Battleshout
+  // 毁灭打击
+  30022: handler_threatOnHuiMie(), //Rank 3
+
+  //Battle Shout 战斗怒吼
   11551: handler_threatOnBuff(52, 'Battle Shout'), //Rank 6
   25289: handler_threatOnBuff(60, 'Battle Shout'), //Rank 7 (AQ)
+  2048: handler_threatOnBuff(68, 'Battle Shout'), //Rank 8 (AQ)
 
-  //Demo Shout
-  11556: handler_threatOnDebuff(43, 'Demoralizing Shout'),
+  //命令怒吼
+  469: handler_threatOnBuff(68, 'Health Shout'),
 
-  //Mocking Blow
-  20560: threatFunctions.concat(
+  //Demo Shout 挫志怒吼
+  11556: handler_threatOnDebuff(43, 'Demoralizing Shout'), //Rank 5
+  25203: handler_threatOnDebuff(56, 'Demoralizing Shout'), //Rank 7
+
+  // 暴怒
+  30033: handler_threatOnBuff(40, 'Fury Shout'), //Rank 3
+
+  //Mocking Blow 惩戒痛击
+  25266: threatFunctions.concat(
     handler_damage,
     handler_markSourceOnMiss(borders.taunt)
   ), //("Mocking Blow"),
 
-  //Overpower
+  //Overpower 压制
   11585: handler_damage, //("Overpower"),
 
-  //Rend
-  11574: handler_damage, //("Rend"),
+  //Rend 撕裂
+  25208: handler_damage, //("Rend"),
 
-  /* Zero threat abilities */
+  /* Zero threat abilities 嘲讽 */
   355: threatFunctions.concat(
     handler_taunt,
     handler_markSourceOnMiss(borders.taunt)
   ), //("Taunt"), //Taunt
-  1161: handler_markSourceOnMiss(borders.taunt), //("Challenging Shout"), //Challenging Shout
-  2687: handler_energizeCoeff, //("Bloodrage"), //Bloodrage (cast)
-  29131: handler_energize, //("Bloodrage"), //Bloodrage (buff)
-  29478: handler_zero, //("Battlegear of Might"), //Battlegear of Might
-  23602: handler_zero, //("Shield Specialization"), //Shield Specialization
-  12964: handler_energize, //("Unbridled Wrath"), //Unbridled Wrath
-  11578: handler_zero, //("Charge"), //Charge
-  7922: handler_zero, //("Charge Stun"), //Charge Stun
-  18499: handler_zero, //("Berserker Rage"), //Berserker Rage
-  12966: handler_zero, //("Flurry (Rank 1)"), //Flurry (Rank 1)
+  1161: handler_markSourceOnMiss(borders.taunt), //("Challenging Shout"), //Challenging Shout 挑战怒吼
+  2687: handler_energizeCoeff, //("Bloodrage"), //Bloodrage (cast) 血性狂暴
+  29131: handler_energize, //("Bloodrage"), //Bloodrage (buff) 血性狂暴
+  29478: handler_zero, //("Battlegear of Might"), //Battlegear of Might 力量
+  23602: handler_zero, //("Shield Specialization"), //Shield Specialization 盾牌专精效果
+  12964: handler_energize, //("Unbridled Wrath"), //Unbridled Wrath 怒不可遏效果
+  11578: handler_zero, //("Charge"), //Charge 冲锋
+  7922: handler_zero, //("Charge Stun"), //Charge Stun 冲锋昏迷
+  18499: handler_zero, //("Berserker Rage"), //Berserker Rage 狂暴之怒
+  12966: handler_zero, //("Flurry (Rank 1)"), //Flurry (Rank 1) 乱舞
   12967: handler_zero, //("Flurry (Rank 2)"), //Flurry (Rank 2)
   12968: handler_zero, //("Flurry (Rank 3)"), //Flurry (Rank 3)
   12969: handler_zero, //("Flurry (Rank 4)"), //Flurry (Rank 4)
   12970: handler_zero, //("Flurry (Rank 5)"), //Flurry (Rank 5)
-  12328: handler_zero, //("Death Wish"), //Death Wish
-  871: handler_zero, //("Shield Wall"),
-  1719: handler_zero, //("Recklessness"), //Recklessness
-  12323: handler_zero, //("Piercing Howl"), //Piercing Howl
-  14204: handler_zero, //("Enrage"), //Enrage
-  12975: handler_zero, //("Last Stand (cast)"), //Last Stand (cast)
-  12976: handler_zero, //("Last Stand (buff)"), //Last Stand (buff)
-  2565: handler_zero, //("Shield Block"), //Shield Block
+  12971: handler_zero, //("Flurry (Rank 5)"), //Flurry (Rank 6)
+  12972: handler_zero, //("Flurry (Rank 5)"), //Flurry (Rank 7)
+  12973: handler_zero, //("Flurry (Rank 5)"), //Flurry (Rank 8)
+  12974: handler_zero, //("Flurry (Rank 5)"), //Flurry (Rank 9)
+  12328: handler_zero, //("Death Wish"), //Death Wish 横扫攻击
+  871: handler_zero, //("Shield Wall"), 盾墙
+  1719: handler_zero, //("Recklessness"), //Recklessness 鲁莽
+  12323: handler_zero, //("Piercing Howl"), //Piercing Howl 刺耳怒吼
+  14204: handler_zero, //("Enrage"), //Enrage 激怒
+  12975: handler_zero, //("Last Stand (cast)"), //Last Stand (cast) 破釜
+  12976: handler_zero, //("Last Stand (buff)"), //Last Stand (buff) 破釜
+  2565: handler_zero, //("Shield Block"), //Shield Block 盾牌格挡
 
   /* Consumable */
-  6613: handler_zero, //("Great Rage Potion"), //Great Rage Potion
-  17528: handler_zero, //("Mighty Rage Potion"), //Mighty Rage Potion
+  6613: handler_zero, //("Great Rage Potion"), //Great Rage Potion 暴怒
+  17528: handler_zero, //("Mighty Rage Potion"), //Mighty Rage Potion 强效怒气
 
   /* Forms */
-  9634: handler_zero, //(1.45, "Bear Form"),
-  768: handler_zero, //(0.71, "Cat Form"),
+  9634: handler_zero, //(1.45, "Bear Form"), 巨熊形态
+  768: handler_zero, //(0.71, "Cat Form"), 猫形态
 
   /* Bear */
-  5209: handler_markSourceOnMiss(borders.taunt), // Challenging Roar
-  6807: handler_modDamage(1.75, 'Maul (Rank 1)'),
+  5209: handler_markSourceOnMiss(borders.taunt), // Challenging Roar 挑战咆哮
+  6807: handler_modDamage(1.75, 'Maul (Rank 1)'), // 重殴
   6808: handler_modDamage(1.75, 'Maul (Rank 2)'),
   6809: handler_modDamage(1.75, 'Maul (Rank 3)'),
   8972: handler_modDamage(1.75, 'Maul (Rank 4)'),
   9745: handler_modDamage(1.75, 'Maul (Rank 5)'),
   9880: handler_modDamage(1.75, 'Maul (Rank 6)'),
-  9881: handler_modDamage(1.75, 'Maul'),
+  9881: handler_modDamage(1.75, 'Maul (Rank 7)'),
+  26996: handler_modDamage(1.75, 'Maul'),
 
-  779: handler_modDamage(1.75, 'Swipe (Rank 1)'),
+  779: handler_modDamage(1.75, 'Swipe (Rank 1)'), // 横扫
   780: handler_modDamage(1.75, 'Swipe (Rank 2)'),
   769: handler_modDamage(1.75, 'Swipe (Rank 3)'),
   9754: handler_modDamage(1.75, 'Swipe (Rank 4)'),
-  9908: handler_modDamage(1.75, 'Swipe'),
+  9908: handler_modDamage(1.75, 'Swipe (Rank 5)'),
+  26997: handler_modDamage(1.75, 'Swipe'),
 
-  99: handler_threatOnDebuff(9, 'Demoralizing Roar (Rank 1)'),
+  99: handler_threatOnDebuff(9, 'Demoralizing Roar (Rank 1)'), // 挫志咆哮
   1735: handler_threatOnDebuff(15, 'Demoralizing Roar (Rank 2)'),
   9490: handler_threatOnDebuff(20, 'Demoralizing Roar (Rank 3)'),
   9747: handler_threatOnDebuff(30, 'Demoralizing Roar (Rank 4)'),
-  9898: handler_threatOnDebuff(39, 'Demoralizing Roar'),
+  9898: handler_threatOnDebuff(39, 'Demoralizing Roar (Rank 5)'),
+  26998: handler_threatOnDebuff(39, 'Demoralizing Roar'),
 
   6795: threatFunctions.concat(
     handler_taunt,
     handler_markSourceOnMiss(borders.taunt)
-  ), //("Growl"),
-  5229: handler_energize, //("Enrage"),
-  17057: handler_energize, //("Furor"),
+  ), //("Growl"), 低吼
+  5229: handler_energize, //("Enrage"), 激怒
+  17057: handler_energize, //("Furor"), 激怒
 
-  8983: handler_zero, //("Bash"), //TODO test bash threat
+  8983: handler_zero, //("Bash"), //TODO test bash threat 猛击
 
-  /* Cat */
-  9850: handler_damage, //("Claw"),
-  9830: handler_damage, //("Shred"),
+  /* Cat follow line 294*/
+  27000: handler_damage, //("Claw"),
+  27002: handler_damage, //("Shred"),
   9904: handler_damage, //("Rake"),
   22829: handler_damage, //("Ferocious Bite"),
-  9867: handler_damage, //("Ravage"),
-  9896: handler_damage, //("Rip"),
-  9827: handler_damage, //("Pounce"),
+  27005: handler_damage, //("Ravage"),
+  27008: handler_damage, //("Rip"),
+  27006: handler_damage, //("Pounce"),
   9913: handler_zero, //("Prowl"),
   9846: handler_zero, //("Tiger's Fury"),
+  33983: handler_damage, //裂伤3
 
   1850: handler_zero, //("Dash (Rank 1)"),
-  9821: handler_zero, //("Dash"),
+  33357: handler_zero, //("Dash"),
 
+  // 畏缩
   8998: handler_castCanMiss(-240, 'Cower (Rank 1)'),
   9000: handler_castCanMiss(-390, 'Cower (Rank 2)'),
-  9892: handler_castCanMiss(-600, 'Cower'),
+  9892: handler_castCanMiss(-600, 'Cower (Rank 3)'),
+  27004: handler_castCanMiss(-1000, 'Cower'), //Rank 5
 
   /* Healing */
   //TODO
 
-  /* Abilities */
+  /* Abilities 野性精灵之火*/
   16857: handler_threatOnDebuff(108, 'Faerie Fire (Feral)(Rank 1)'),
   17390: handler_threatOnDebuff(108, 'Faerie Fire (Feral)(Rank 2)'),
   17391: handler_threatOnDebuff(108, 'Faerie Fire (Feral)(Rank 3)'),
-  17392: handler_threatOnDebuff(108, 'Faerie Fire (Feral)'),
+  17392: handler_threatOnDebuff(108, 'Faerie Fire (Feral)(Rank 4)'),
+  26993: handler_threatOnDebuff(108, 'Faerie Fire (Feral)'),
 
   770: handler_threatOnDebuff(108, 'Faerie Fire (Rank 1)'),
   778: handler_threatOnDebuff(108, 'Faerie Fire (Rank 2)'),
   9749: handler_threatOnDebuff(108, 'Faerie Fire (Rank 3)'),
-  9907: handler_threatOnDebuff(108, 'Faerie Fire'),
+  9907: handler_threatOnDebuff(108, 'Faerie Fire (Rank 4)'),
+  27011: handler_threatOnDebuff(108, 'Faerie Fire'),
 
-  16870: handler_zero, //("Clearcasting"),
-  29166: handler_zero, //("Innervate"),
+  16870: handler_zero, //("Clearcasting"), 节能施法
+  29166: handler_zero, //("Innervate"), 激活
 
-  22842: handler_heal, //("Frienzed Regeneration (Rank 1)"),
+  22842: handler_heal, //("Frienzed Regeneration (Rank 1)"), 狂暴回复
   22895: handler_heal, //("Frienzed Regeneration (Rank 2)"),
-  22896: handler_heal, //("Frienzed Regeneration"),
+  22896: handler_heal, //("Frienzed Regeneration (Rank 3)"),
+  26999: handler_heal, //("Frienzed Regeneration"),
 
-  24932: handler_zero, //("Leader of the Pack"),
+  24932: handler_zero, //("Leader of the Pack"), 兽群领袖
 
   /* Items */
-  13494: handler_zero, //("Manual Crowd Pummeler"),
+  13494: handler_zero, //("Manual Crowd Pummeler"), 加速
 };
 
 let zeroThreatSpells = [];
