@@ -29,16 +29,16 @@ const baseThreatCoefficients = {
 };
 
 const buffNames = {
-  1038: 'Blessing of Salvation',
-  25895: 'Greater Blessing of Salvation',
-  25909: 'Tranquil Air Totem',
-  71: 'Defensive Stance',
-  2457: 'Battle Stance',
-  2458: 'Berserker Stance',
-  5487: 'Bear Form',
-  9634: 'Dire Bear Form',
-  768: 'Cat Form',
-  25780: 'Righteous Fury',
+  1038: 'Blessing of Salvation',//拯救祝福
+  25895: 'Greater Blessing of Salvation',//强效拯救
+  25909: 'Tranquil Air Totem',//萨满宁静图腾
+  71: 'Defensive Stance',//防御姿态
+  2457: 'Battle Stance',//战斗姿态
+  2458: 'Berserker Stance',//狂暴姿态
+  5487: 'Bear Form',//熊形态
+  9634: 'Dire Bear Form',//巨熊形态
+  768: 'Cat Form',//猎豹形态
+  25780: 'Righteous Fury',//正义之怒
 };
 
 const buffMultipliers = {
@@ -52,7 +52,7 @@ const buffMultipliers = {
   9634: getThreatCoefficient(1.3), // Dire Bear Form
   768: getThreatCoefficient(0.71), // Cat Form
   25780: getThreatCoefficient({ 2: 1.6 }), // Righteous Fury
-  26400: getThreatCoefficient(0.3), // Fetish of the Sand Reaver
+  26400: getThreatCoefficient(0.3), // Fetish of the Sand Reaver 奥术环绕
 };
 
 // The leaf elements are functions (buffs,rank) => threatCoefficient
@@ -121,12 +121,15 @@ const talents = {
               rank *
               (spellId in
                 {
+                  // 次级治疗波
                   8004: true,
                   8008: true,
                   8010: true,
                   10466: true,
                   10467: true,
                   10468: true, // Lesser Healing Wave
+                  25420: true,
+                  // 治疗波
                   331: true,
                   332: true,
                   547: true,
@@ -137,9 +140,16 @@ const talents = {
                   10395: true,
                   10396: true,
                   25357: true, // Healing Wave
+                  25391: true,
+                  25396: true,
+                  // 治疗链
                   1064: true,
                   10622: true,
                   10623: true, // Chain Heal
+                  25422: true,
+                  25423: true,
+                  // 大地之盾
+                  32594: true
                 })
         ),
     },
@@ -148,54 +158,55 @@ const talents = {
 
 // These make dots green-bordered
 const invulnerabilityBuffs = {
-  498: 'Divine Protection',
-  5573: 'Divine Protection',
-  642: 'Divine Shield',
-  1020: 'Divine Shield',
-  1022: 'Blessing of Protection',
-  5599: 'Blessing of Protection',
-  10278: 'Blessing of Protection',
-  11958: 'Ice Block',
-  3169: 'LIP', // Limited Invulnerability Potion
-  19752: 'Divine Intervention',
-  6724: 'Light of Elune',
+  498: 'Divine Protection',//圣佑术1
+  5573: 'Divine Protection',//圣佑术2
+  642: 'Divine Shield',//圣盾术1
+  1020: 'Divine Shield',//圣盾术2
+  1022: 'Blessing of Protection',//保护祝福1
+  5599: 'Blessing of Protection',//保护祝福2
+  10278: 'Blessing of Protection',//保护祝福3
+  11958: 'Ice Block',//急速冷却
+  3169: 'LIP', // Limited Invulnerability Potion //无敌
+  19752: 'Divine Intervention',//神圣干涉
+  6724: 'Light of Elune',//月神之光
 };
 // These make dots yellow-bordered
 const aggroLossBuffs = {
-  118: true,
-  12824: true,
-  12825: true,
-  28272: true,
-  28271: true,
-  12826: true, // Mages' Polymorph
-  23023: true, // Razorgore Conflagrate
-  23310: true,
+  118: true,//变形术1
+  12824: true,//变形术2
+  12825: true,//变形术3
+  28272: true,//变猪术
+  28271: true,//变龟术
+  12826: true, // Mages' Polymorph 变形术4
+  23023: true, // Razorgore Conflagrate 燃烧
+  23310: true, //时间流逝
   23311: true,
-  23312: true, // Chromaggus Time Lapse
-  22289: true, // Brood Power: Green
-  20604: true, // Lucifron Dominate Mind
-  24327: true, // Hakkar's Cause Insanity
-  23603: true, // Nefarian: Wild Polymorph
-  26580: true, // Princess Yauj: Fear
+  23312: true, // Chromaggus Time Lapse 时间流逝
+  22289: true, // Brood Power: Green 雏龙之语：绿色
+  20604: true, // Lucifron Dominate Mind 统御意志
+  24327: true, // Hakkar's Cause Insanity 疯狂
+  23603: true, // Nefarian: Wild Polymorph 狂野变形
+  26580: true, // Princess Yauj: Fear 恐惧
 };
 // These make dots orange
 const fixateBuffs = {
-  355: true, // Taunt
-  1161: true, // Challenging Shout
-  5209: true, // Challenging Roar
-  6795: true, // Growl
-  694: true,
-  7400: true,
-  7402: true,
-  20559: true,
-  20560: true, // Mocking Blow
-  29060: true, // Deathknight Understudy Taunt
+  355: true, // Taunt 嘲讽
+  1161: true, // Challenging Shout 挑战怒吼
+  5209: true, // Challenging Roar 挑战咆哮
+  6795: true, // Growl 低吼
+  694: true, // 惩戒痛击1
+  7400: true, // 惩戒痛击2
+  7402: true, // 惩戒痛击3
+  20559: true, // 惩戒痛击4
+  20560: true, // Mocking Blow 惩戒痛击5
+  25266: true, // 惩戒痛击6
+  29060: true, // Deathknight Understudy Taunt 嘲讽
 };
 // These make a dot in the graph on application and removal
 // Also used for event filtering in fetchWCLreport
 const notableBuffs = {
-  23397: true, // Nefarian's warrior class call
-  23398: true, // Druid class call
+  23397: true, // Nefarian's warrior class call 狂暴
+  23398: true, // Druid class call 自然变形
 };
 for (let k in buffMultipliers) notableBuffs[k] = true;
 for (let k in invulnerabilityBuffs) notableBuffs[k] = true;
@@ -204,78 +215,93 @@ for (let k in fixateBuffs) notableBuffs[k] = true;
 
 const auraImplications = {
   Warrior: {
+    // 2457战斗之态，2458狂暴姿态，71防御姿态
     7384: 2457,
     7887: 2457,
     11584: 2457,
-    11585: 2457, //Overpower
+    11585: 2457, //Overpower 压制
     100: 2457,
     6178: 2457,
-    11578: 2457, //Charge
+    11578: 2457, //Charge 冲锋
     6343: 2457,
     8198: 2457,
     8204: 2457,
     8205: 2457,
     11580: 2457,
-    11581: 2457, //Thunderclap
+    11581: 2457,
+    25264: 2457, //Thunderclap 雷霆一击
     694: 2457,
     7400: 2457,
     7402: 2457,
     20559: 2457,
-    20560: 2457, //Mocking Blow
-    20230: 2457, //Retaliation
-    12292: 2457, //Sweeping Strikes
+    20560: 2457,
+    25266: 2457, //Mocking Blow 惩戒痛击
+    20230: 2457, //Retaliation 反击风暴
+    12292: 2457, //Sweeping Strikes 死亡之愿
     20252: 2458,
     20617: 2458,
-    20616: 2458, //Intercept
-    1680: 2458, //Whirlwind
-    18499: 2458, //Berserker Rage
-    1719: 2458, //Recklessness
+    20616: 2458,
+    25272: 2457,
+    25275: 2457, //Intercept 拦截
+    1680: 2458, //Whirlwind 旋风斩
+    18499: 2458, //Berserker Rage 狂暴之怒
+    1719: 2458, //Recklessness 鲁莽
     6552: 2458,
-    6554: 2458, //Pummel
-    355: 71, //Taunt
-    676: 71, //Disarm
+    6554: 2458, //Pummel 拳击
+    355: 71, //Taunt 嘲讽
+    676: 71, //Disarm 缴械
     6572: 71,
     6574: 71,
     7379: 71,
     11600: 71,
     11601: 71,
-    25288: 71, //Revenge
-    2565: 71, //Shield Block
-    871: 71, //Shield Wall
+    25288: 71,
+    25269: 71,
+    30357: 71, //Revenge 复仇
+    2565: 71, //Shield Block 盾牌格挡
+    871: 71, //Shield Wall 盾墙
+    30022: 71 //毁灭打击
   },
   Druid: {
+    // 768猎豹形态， 9634巨熊形态
     6807: 9634,
     6808: 9634,
     6809: 9634,
     8972: 9634,
     9745: 9634,
     9880: 9634,
-    9881: 9634, //Maul
+    9881: 9634, 
+    26996: 9634, //Maul 重殴
     779: 9634,
     780: 9634,
     769: 9634,
     9754: 9634,
-    9908: 9634, //Swipe
+    9908: 9634, 
+    26997: 9634, //Swipe 横扫
     99: 9634,
     1735: 9634,
     9490: 9634,
     9747: 9634,
-    9898: 9634, //Demoralizing Roar
-    6795: 9634, //Growl
-    5229: 9634, //Enrage
-    17057: 9634, //Furor
-    8983: 9634, //Bash
-    9850: 768, //Claw
-    9830: 768, //Shred
-    9904: 768, //Rake
-    22829: 768, //Ferocious Bite
-    9867: 768, //Ravage
-    9896: 768, //Rip
-    9827: 768, //Pounce
-    9913: 768, //Prowl
-    9846: 768, //Tiger's Fury
-    1850: 768,
-    9821: 768, //Dash
+    9898: 9634,
+    26998: 9634, //Demoralizing Roar 挫志咆哮
+    6795: 9634, //Growl 低吼
+    5229: 9634, //Enrage 激怒
+    17057: 9634, //Furor 激怒
+    33987: 9634, // 裂伤
+    33745: 9634, // 割伤
+    8983: 9634, //Bash 猛击
+    27011: 9634, //精灵之火
+    27000: 768, //Claw 爪击
+    27002: 768, //Shred 撕碎7
+    9904: 768, //Rake 斜掠
+    24248: 768, //Ferocious Bite 凶猛撕咬6
+    27005: 768, //Ravage 毁灭5
+    27008: 768, //Rip 割裂
+    27006: 768, //Pounce 突袭
+    9913: 768, //Prowl 潜行
+    9846: 768, //Tiger's Fury 猛虎之怒
+    33357: 768, //Dash 急奔3
+    33983: 768, // 裂伤3
   },
 };
 
@@ -700,21 +726,22 @@ function handler_timelapse(ev, fight) {
 }
 
 const spellFunctions = {
-  18670: handler_bossDropThreatOnHit(0.5), // Broodlord Knock Away
-  23339: handler_bossDropThreatOnHit(0.5), // BWL Wing Buffet
-  18392: handler_bossDropThreatOnCast(0), // Onyxia Fireball
-  19633: handler_bossDropThreatOnHit(0.75), // Onyxia Knock Away
-  20534: handler_bossDropThreatOnCast(0), // Majordomo Teleport
-  20566: handler_bossThreatWipeOnCast, // Wrath of Ragnaros
-  23138: handler_bossThreatWipeOnCast, // Gate of Shazzrah
-  22289: handler_bossDropThreatOnDebuff(0.5), // Brood Power: Green
-  24408: handler_bossThreatWipeOnCast, // Bloodlord Mandokir's Charge
-  24690: handler_bossDropThreatOnDebuff(0), // Hakkar's Aspect of Arlokk
+  // Boss技能
+  18670: handler_bossDropThreatOnHit(0.5), // Broodlord Knock Away 击退
+  23339: handler_bossDropThreatOnHit(0.5), // BWL Wing Buffet 龙翼打击
+  18392: handler_bossDropThreatOnCast(0), // Onyxia Fireball 火球术
+  19633: handler_bossDropThreatOnHit(0.75), // Onyxia Knock Away 击退
+  20534: handler_bossDropThreatOnCast(0), // Majordomo Teleport 传送
+  20566: handler_bossThreatWipeOnCast, // Wrath of Ragnaros 拉格纳罗斯之怒
+  23138: handler_bossThreatWipeOnCast, // Gate of Shazzrah 沙斯拉尔之门
+  22289: handler_bossDropThreatOnDebuff(0.5), // Brood Power: Green 雏龙之语：绿色
+  24408: handler_bossThreatWipeOnCast, // Bloodlord Mandokir's Charge 冲锋
+  24690: handler_bossDropThreatOnDebuff(0), // Hakkar's Aspect of Arlokk 娅尔罗的守护
   //20604: handler_mindcontrol, // Lucifron Dominate Mind
   '-1': handler_bossThreatWipeOnCast, // Custom threat drop, currently for High Priestess Arlokk
-  23310: handler_timelapse,
+  23310: handler_timelapse, // 时间流逝
   23311: handler_timelapse,
-  23312: handler_timelapse,
+  23312: handler_timelapse, // 时间流逝
   800: function (ev, fight) {
     // Twin Emperors' Twin Teleport
     if (ev.type !== 'applybuff') return;
@@ -722,19 +749,19 @@ const spellFunctions = {
     for (let k in u.threat) {
       u.setThreat(k, 0, ev.timestamp, ev.ability.name);
     }
-  },
-  26102: handler_bossDropThreatOnHit(0), // Ouro's Sand Blast
-  26580: handler_bossDropThreatOnHit(0), // Yauj's Fear
-  26561: handler_bossThreatWipeOnCast, // Vem's Berserker Charge
-  11130: handler_bossDropThreatOnHit(0.5), // Qiraji Champion's Knock Away, need to confirm pct
-  28408: handler_bossThreatWipeOnCast, // Kel'Thuzad's Chains of Kel'Thuzad
-  29060: handler_taunt, // Deathknight Understudy Taunt
-  28835: handler_bossPartialThreatWipeOnCast(0.5), // Mark of Zeliek
-  28834: handler_bossPartialThreatWipeOnCast(0.5), // Mark of Mograine
-  28833: handler_bossPartialThreatWipeOnCast(0.5), // Mark of Blaumeux
-  28832: handler_bossPartialThreatWipeOnCast(0.5), // Mark of Korth'azz
+  }, // 双子传送
+  26102: handler_bossDropThreatOnHit(0), // Ouro's Sand Blast 沙尘爆裂
+  26580: handler_bossDropThreatOnHit(0), // Yauj's Fear 恐惧
+  26561: handler_bossThreatWipeOnCast, // Vem's Berserker Charge 狂暴冲锋
+  11130: handler_bossDropThreatOnHit(0.5), // Qiraji Champion's Knock Away, need to confirm pct 击退
+  28408: handler_bossThreatWipeOnCast, // Kel'Thuzad's Chains of Kel'Thuzad 克尔苏加德锁链
+  29060: handler_taunt, // Deathknight Understudy Taunt 嘲讽
+  28835: handler_bossPartialThreatWipeOnCast(0.5), // Mark of Zeliek 4dk印记
+  28834: handler_bossPartialThreatWipeOnCast(0.5), // Mark of Mograine 4dk印记
+  28833: handler_bossPartialThreatWipeOnCast(0.5), // Mark of Blaumeux 4dk印记
+  28832: handler_bossPartialThreatWipeOnCast(0.5), // Mark of Korth'azz 4dk印记
 
-  17624: handler_vanish, // Flask of Petrification
+  17624: handler_vanish, // Flask of Petrification 石化
 
   // Paladin 圣骑士
   // 强效王者
@@ -876,6 +903,8 @@ const spellFunctions = {
   10945: handler_threatOnHit(380), // Mind Blast r7
   10946: handler_threatOnHit(460), // Mind Blast r8
   10947: handler_threatOnHit(540), // Mind Blast r9
+  25372: handler_threatOnHit(620), // Mind Blast r10
+  25375: handler_threatOnHit(700), // Mind Blast r11
   // 神圣新星
   15237: handler_zero, // Holy Nova r1
   15430: handler_zero, // Holy Nova r2
@@ -883,6 +912,7 @@ const spellFunctions = {
   27799: handler_zero, // Holy Nova r4
   27800: handler_zero, // Holy Nova r5
   27801: handler_zero, // Holy Nova r6
+  25331: handler_zero, // Holy Nova r7
   23455: handler_zero, // Holy Nova r1
   23458: handler_zero, // Holy Nova r2
   23459: handler_zero, // Holy Nova r3
@@ -1040,25 +1070,25 @@ const spellFunctions = {
   13241: handler_damage, //("Goblin Sapper Charge"), //Goblin Sapper Charge
 
   /* Zero Threat Abilities */
-  71: handler_zero, // Defensive Stance
-  2457: handler_zero, // Battle Stance
-  2458: handler_zero, // Berserker Stance
-  10610: handler_zero, //("Windfury Totem"), //Windfury Totem
-  20572: handler_zero, //("Blood Fury"), //Blood Fury
-  26296: handler_zero, //("Berserking (Troll racial)"), //Berserking (Troll racial)
-  26635: handler_zero, //("Berserking (Troll racial)"), //Berserking (Troll racial)
-  22850: handler_zero, //("Sanctuary"), //Sanctuary
-  9515: handler_zero, //("Summon Tracking Hound"), //Summon Tracking Hound
+  71: handler_zero, // Defensive Stance 防御姿态
+  2457: handler_zero, // Battle Stance 战斗姿态
+  2458: handler_zero, // Berserker Stance 狂暴姿态
+  10610: handler_zero, //("Windfury Totem"), //Windfury Totem 风怒
+  20572: handler_zero, //("Blood Fury"), //Blood Fury 兽人血性狂怒
+  26296: handler_zero, //("Berserking (Troll racial)"), //Berserking (Troll racial) 巨魔狂暴
+  26635: handler_zero, //("Berserking (Troll racial)"), //Berserking (Troll racial) 巨魔狂暴
+  22850: handler_zero, //("Sanctuary"), //Sanctuary 庇护，护甲提高300
+  9515: handler_zero, //("Summon Tracking Hound"), //Summon Tracking Hound 召唤追踪犬
 
   /* Consumable Buffs (zero-threat) */
-  10667: handler_zero, //("Rage of Ages"), //Rage of Ages
-  25804: handler_zero, //("Rumsey Rum Black Label"), //Rumsey Rum Black Label
-  17038: handler_zero, //("Winterfall Firewater"), //Winterfall Firewater
-  8220: handler_zero, //("Savory Deviate Delight (Flip Out)"), //Savory Deviate Delight (Flip Out)
-  17543: handler_zero, //("Fire Protection"), //Fire Protection
-  17548: handler_zero, //("Greater Shadow Protection Potion"), //Greater Shadow Protection Potion
-  18125: handler_zero, //("Blessed Sunfruit"), //Blessed Sunfruit
-  17538: handler_zero, //("Elixir of the Mongoose"), //Elixir of the Mongoose
+  10667: handler_zero, //("Rage of Ages"), //Rage of Ages 远古之怒
+  25804: handler_zero, //("Rumsey Rum Black Label"), //Rumsey Rum Black Label 黑标朗姆酒
+  17038: handler_zero, //("Winterfall Firewater"), //Winterfall Firewater 冬泉火酒
+  8220: handler_zero, //("Savory Deviate Delight (Flip Out)"), //Savory Deviate Delight (Flip Out) 精神错乱
+  17543: handler_zero, //("Fire Protection"), //Fire Protection 防护火焰
+  17548: handler_zero, //("Greater Shadow Protection Potion"), //Greater Shadow Protection Potion 防护暗影
+  18125: handler_zero, //("Blessed Sunfruit"), //Blessed Sunfruit 神圣太阳果
+  17538: handler_zero, //("Elixir of the Mongoose"), //Elixir of the Mongoose 
   11359: handler_zero, //("Restorative Potion (Restoration) Buff"), //Restorative Potion (Restoration) Buff
   23396: handler_zero, //("Restorative Potion (Restoration) Dispel"), //Restorative Potion (Restoration) Dispel
 
