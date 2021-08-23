@@ -8,7 +8,7 @@ https://classic.warcraftlogs.com/v1/report/events/vKFV8Yygpq4Daj9w?&start=325213
 
 ## TODO
 
-1. ~~FS~~, 需要排除水宝宝
+1. ~~FS~~
 2. LR
 3. ~~SS~~
 4. ZS

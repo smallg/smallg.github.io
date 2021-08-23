@@ -29,16 +29,16 @@ const baseThreatCoefficients = {
 };
 
 const buffNames = {
-  1038: 'Blessing of Salvation',//拯救祝福
-  25895: 'Greater Blessing of Salvation',//强效拯救
-  25909: 'Tranquil Air Totem',//萨满宁静图腾
-  71: 'Defensive Stance',//防御姿态
-  2457: 'Battle Stance',//战斗姿态
-  2458: 'Berserker Stance',//狂暴姿态
-  5487: 'Bear Form',//熊形态
-  9634: 'Dire Bear Form',//巨熊形态
-  768: 'Cat Form',//猎豹形态
-  25780: 'Righteous Fury',//正义之怒
+  1038: 'Blessing of Salvation', //拯救祝福
+  25895: 'Greater Blessing of Salvation', //强效拯救
+  25909: 'Tranquil Air Totem', //萨满宁静图腾
+  71: 'Defensive Stance', //防御姿态
+  2457: 'Battle Stance', //战斗姿态
+  2458: 'Berserker Stance', //狂暴姿态
+  5487: 'Bear Form', //熊形态
+  9634: 'Dire Bear Form', //巨熊形态
+  768: 'Cat Form', //猎豹形态
+  25780: 'Righteous Fury', //正义之怒
 };
 
 const buffMultipliers = {
@@ -58,7 +58,7 @@ const buffMultipliers = {
 // The leaf elements are functions (buffs,rank) => threatCoefficient
 const talents = {
   Warrior: {
-    'Defiance': {
+    Defiance: {
       maxRank: 5,
       coeff: function (buffs, rank = 5) {
         if (!(71 in buffs)) return getThreatCoefficient(1);
@@ -149,7 +149,7 @@ const talents = {
                   25422: true,
                   25423: true,
                   // 大地之盾
-                  32594: true
+                  32594: true,
                 })
         ),
     },
@@ -158,25 +158,25 @@ const talents = {
 
 // These make dots green-bordered
 const invulnerabilityBuffs = {
-  498: 'Divine Protection',//圣佑术1
-  5573: 'Divine Protection',//圣佑术2
-  642: 'Divine Shield',//圣盾术1
-  1020: 'Divine Shield',//圣盾术2
-  1022: 'Blessing of Protection',//保护祝福1
-  5599: 'Blessing of Protection',//保护祝福2
-  10278: 'Blessing of Protection',//保护祝福3
-  11958: 'Ice Block',//急速冷却
+  498: 'Divine Protection', //圣佑术1
+  5573: 'Divine Protection', //圣佑术2
+  642: 'Divine Shield', //圣盾术1
+  1020: 'Divine Shield', //圣盾术2
+  1022: 'Blessing of Protection', //保护祝福1
+  5599: 'Blessing of Protection', //保护祝福2
+  10278: 'Blessing of Protection', //保护祝福3
+  11958: 'Ice Block', //急速冷却
   3169: 'LIP', // Limited Invulnerability Potion //无敌
-  19752: 'Divine Intervention',//神圣干涉
-  6724: 'Light of Elune',//月神之光
+  19752: 'Divine Intervention', //神圣干涉
+  6724: 'Light of Elune', //月神之光
 };
 // These make dots yellow-bordered
 const aggroLossBuffs = {
-  118: true,//变形术1
-  12824: true,//变形术2
-  12825: true,//变形术3
-  28272: true,//变猪术
-  28271: true,//变龟术
+  118: true, //变形术1
+  12824: true, //变形术2
+  12825: true, //变形术3
+  28272: true, //变猪术
+  28271: true, //变龟术
   12826: true, // Mages' Polymorph 变形术4
   23023: true, // Razorgore Conflagrate 燃烧
   23310: true, //时间流逝
@@ -260,7 +260,7 @@ const auraImplications = {
     30357: 71, //Revenge 复仇
     2565: 71, //Shield Block 盾牌格挡
     871: 71, //Shield Wall 盾墙
-    30022: 71 //毁灭打击
+    30022: 71, //毁灭打击
   },
   Druid: {
     // 768猎豹形态， 9634巨熊形态
@@ -270,13 +270,13 @@ const auraImplications = {
     8972: 9634,
     9745: 9634,
     9880: 9634,
-    9881: 9634, 
+    9881: 9634,
     26996: 9634, //Maul 重殴
     779: 9634,
     780: 9634,
     769: 9634,
     9754: 9634,
-    9908: 9634, 
+    9908: 9634,
     26997: 9634, //Swipe 横扫
     99: 9634,
     1735: 9634,
@@ -580,22 +580,23 @@ function handler_heal(ev, fight) {
 }
 
 // TODO
+/**
+ * hitType 8: Parry(格挡), 7: Dodge(躲闪)
+ */
 function handler_threatOnHuiMie() {
   return (ev, fight) => {
-    console.log('fk', ev, ev.hitType, ev.amount)
+    if (ev.type === 'damage') {
+      console.log('fk', ev, ev.hitType, ev.amount);
+    }
     if (ev.type !== 'damage' || ev.hitType > 6 || ev.hitType === 0) return;
-    threatFunctions.sourceThreatenTarget(
-      ev,
-      fight,
-      ev.amount + 176
-    );
+    threatFunctions.sourceThreatenTarget(ev, fight, ev.amount + 176);
   };
 }
 
 function handler_threatOnHit(threatValue) {
   return (ev, fight) => {
-    if (threatValue === 222){
-      console.log('fk', ev)
+    if (threatValue === 222) {
+      console.log('fk', ev);
     }
     if (ev.type !== 'damage' || ev.hitType > 6 || ev.hitType === 0) return;
     threatFunctions.sourceThreatenTarget(
@@ -874,10 +875,10 @@ const spellFunctions = {
   19943: handler_modHeal(0.5), // Flash of Light r6
   27137: handler_modHeal(0.5), // Flash of Light r7
   // 圣疗术
-  633: handler_modHeal(.5), // Lay on Hands r1 - Generates a total threat of heal * .5 instead of heal * .25
-  2800: handler_modHeal(.5), // Lay on Hands r2
-  10310: handler_modHeal(.5), // Lay on Hands r3
-  27154: handler_modHeal(.5), // Lay on Hands r4
+  633: handler_modHeal(0.5), // Lay on Hands r1 - Generates a total threat of heal * .5 instead of heal * .25
+  2800: handler_modHeal(0.5), // Lay on Hands r2
+  10310: handler_modHeal(0.5), // Lay on Hands r3
+  27154: handler_modHeal(0.5), // Lay on Hands r4
   // 神圣震击
   25914: handler_modHeal(0.5), // Holy Shock r1
   25913: handler_modHeal(0.5), // Holy Shock r2
@@ -893,11 +894,11 @@ const spellFunctions = {
   10181: handler_damage, // Frostbolt
   66: handler_invisibility,
 
-  // Rogue 
+  // Rogue
   // 盗贼消失等级1，2，3
   1856: handler_vanish,
   1857: handler_vanish, // Vanish
-  26889: handler_vanish, 
+  26889: handler_vanish,
   // 盗贼佯攻等级1,2,3,4,5,6
   1966: handler_castCanMissNoCoefficient(-150), // Feint r1
   6768: handler_castCanMissNoCoefficient(-240), // Feint r2
@@ -987,7 +988,7 @@ const spellFunctions = {
   27221: handler_zero, // Drain Mana r5
   30908: handler_zero, // Drain Mana r6
   // 吸取生命
-  689: handler_damage, // Drain Life r1 
+  689: handler_damage, // Drain Life r1
   699: handler_damage, // Drain Life r2
   709: handler_damage, // Drain Life r3
   7651: handler_damage, // Drain Life r4
