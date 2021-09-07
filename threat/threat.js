@@ -1148,7 +1148,9 @@ function selectEnemy() {
             let el_u = document.createElement("option");
             el_u.value = s + ";" + k;
             el_u.textContent = u.threat[k].target.name + " - " + u.threat[k].target.key;
-            el_targetSelect.appendChild(el_u);
+            if (u.threat[k].target.type !== 'Pet') {
+                el_targetSelect.appendChild(el_u);
+            }
             if (k === prevSelection) el_targetSelect.selectedIndex = j;
             j += 1;
         }
