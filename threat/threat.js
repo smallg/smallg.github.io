@@ -300,6 +300,13 @@ class ThreatTrace {
             el_table.appendChild(els[0]);
         }
         el_div.appendChild(el_table);
+        let labelOverrideTalents = document.createElement("LABEL");
+        labelOverrideTalents.textContent = "Force override talents";
+        let buttonOverrideTalents = document.createElement("INPUT");
+        buttonOverrideTalents.setAttribute("type", "checkbox");
+        buttonOverrideTalents.setAttribute("id", "buttonOverrideTalents");
+        el_div.appendChild(labelOverrideTalents)
+        el_div.appendChild(buttonOverrideTalents)
     }
 }
 
@@ -497,7 +504,6 @@ class Player extends Unit {
         this.checkWarrior(events); // Extra stance detection
         this.checkPaladin(events); // Extra Righteous Fury detection
         // this.checkBear(events); // Extra Bear detection
-        // this.checkFaction(tranquilAir); // BoS and tranquil air
         this.checkEnchants(); // Gloves and cloack enchants
         let a = info.initialBuffs;
         for (let k in a) {
@@ -517,49 +523,58 @@ class Player extends Unit {
     }
 
     checkEnchants() {
+        let overrideTalents = false;
+        let elementById = document.getElementById("buttonOverrideTalents");
+        if(elementById) {
+            if (elementById.value) {
+                overrideTalents = true;
+            }
+        }
         for (const combatantInfoElement of combatantInfo) {
             if (combatantInfoElement.sourceID == this.key) {
-                // Talent format [0/44/17]
-                // Just guessing people with enough point do take the talents, and thus infer it
-                let talents = combatantInfoElement.talents;
-                switch (this.type) {
-                    case "Warrior" :
-                        if (talents[1].id < 35) {
-                            this.talents["Improved Berserker Stance"].rank = 0;
-                        }
-                        if (talents[2].id < 3) {
-                            this.talents["Tactical Mastery"].rank = 0;
-                        }
-                        if (talents[2].id < 10) {
-                            this.talents["Defiance"].rank = 0;
-                        }
-                        break;
-                    case "Druid" :
-                        if (talents[1].id < 8) {
-                            this.talents["Feral Instinct"].rank = 0;
-                        }
-                        break;
-                    case "Paladin" :
-                        if (talents[1].id < 13) {
-                            this.talents["Improved Righteous Fury"].rank = 0;
-                        }
-                        if (talents[2].id < 40) {
-                            this.talents["Fanaticism"].rank = 0;
-                        }
-                        break;
-                    case "Shaman" :
-                        if (talents[0].id < 28) {
-                            this.talents["Elemental Precision (fire)"].rank = 0;
-                            this.talents["Elemental Precision (nature)"].rank = 0;
-                            this.talents["Elemental Precision (frost)"].rank = 0;
-                        }
-                        if (talents[1].id < 21) {
-                            this.talents["Spirit Weapons"].rank = 0;
-                        }
-                        if (talents[2].id < 13) {
-                            this.talents["Healing Grace"].rank = 0;
-                        }
-                        break;
+                if (!overrideTalents) {
+                    // Talent format [0/44/17]
+                    // Just guessing people with enough point do take the talents, and thus infer it
+                    let talents = combatantInfoElement.talents;
+                    switch (this.type) {
+                        case "Warrior" :
+                            if (talents[1].id < 35) {
+                                this.talents["Improved Berserker Stance"].rank = 0;
+                            }
+                            if (talents[2].id < 3) {
+                                this.talents["Tactical Mastery"].rank = 0;
+                            }
+                            if (talents[2].id < 10) {
+                                this.talents["Defiance"].rank = 0;
+                            }
+                            break;
+                        case "Druid" :
+                            if (talents[1].id < 8) {
+                                this.talents["Feral Instinct"].rank = 0;
+                            }
+                            break;
+                        case "Paladin" :
+                            if (talents[1].id < 13) {
+                                this.talents["Improved Righteous Fury"].rank = 0;
+                            }
+                            if (talents[2].id < 40) {
+                                this.talents["Fanaticism"].rank = 0;
+                            }
+                            break;
+                        case "Shaman" :
+                            if (talents[0].id < 28) {
+                                this.talents["Elemental Precision (fire)"].rank = 0;
+                                this.talents["Elemental Precision (nature)"].rank = 0;
+                                this.talents["Elemental Precision (frost)"].rank = 0;
+                            }
+                            if (talents[1].id < 21) {
+                                this.talents["Spirit Weapons"].rank = 0;
+                            }
+                            if (talents[2].id < 13) {
+                                this.talents["Healing Grace"].rank = 0;
+                            }
+                            break;
+                    }
                 }
 
                 let auras = combatantInfoElement.auras;
@@ -580,16 +595,6 @@ class Player extends Unit {
                 }
             }
         }
-    }
-
-    // Blessing of Salvation and Tranquil Air detection
-    checkFaction(tranquilAir = false) {
-        if (this.dies || this.tank) return;
-        if (1038 in this.buffs || !this.isBuffInferred(25895)) return;
-        this.buffs[25895] = true;
-        if (!tranquilAir || !this.isBuffInferred(25909)) return;
-        this.buffs[25909] = true;
-
     }
 
     // Extra stance detection
